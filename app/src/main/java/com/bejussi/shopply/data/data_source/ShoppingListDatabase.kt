@@ -21,12 +21,14 @@ abstract class ShoppingListDatabase: RoomDatabase() {
         @Volatile
         private var INSTANCE: ShoppingListDatabase? = null
 
+        const val DATABASE_NAME = "shopping_list_database"
+
         fun getDatabase(context: Context): ShoppingListDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     ShoppingListDatabase::class.java,
-                    "item_database"
+                    DATABASE_NAME
                 )
                     .fallbackToDestructiveMigration()
                     .build()
