@@ -1,16 +1,18 @@
 package com.bejussi.shopply.domain.repository
 
 import com.bejussi.shopply.domain.model.Item
+import kotlinx.coroutines.flow.Flow
+
 
 interface ItemRepository {
 
-    fun getItem(itemId: Int): Item
+    suspend fun getItem(itemId: Int): Item
 
-    fun getItemsList(categoryName: String): List<Item>
+    fun getItemsList(categoryName: String): Flow<List<Item>>
 
-    fun editItem(item: Item)
+    suspend fun editItem(item: Item)
 
-    fun deleteItem(item: Item)
+    suspend fun deleteItem(item: Item)
 
-    fun addItem(item: Item)
+    suspend fun addItem(item: Item)
 }
