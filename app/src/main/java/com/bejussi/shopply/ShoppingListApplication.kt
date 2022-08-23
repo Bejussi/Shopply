@@ -2,7 +2,7 @@ package com.bejussi.shopply
 
 import android.app.Application
 import com.bejussi.shopply.data.data_source.ShoppingListDatabase
+import dagger.hilt.android.HiltAndroidApp
 
-class ShoppingListApplication: Application() {
-    val database: ShoppingListDatabase by lazy { ShoppingListDatabase.getDatabase(this) }
-}
+@HiltAndroidApp
+class ShoppingListApplication: Application()
