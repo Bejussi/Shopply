@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.CategoryListFragment"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp"
+    android:paddingTop="20dp">
+
+    <TextView
+        android:id="@+id/hello_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello"
+        style="@style/HelloText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/emoji_text"
+        style="@style/HelloText"
+        android:layout_width="@dimen/emoji_width"
+        android:layout_height="@dimen/emoji_height"
+        android:text="@string/emoji"
+        android:layout_marginLeft="@dimen/emoji_margin_left"
+        app:layout_constraintStart_toEndOf="@+id/hello_text"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/what_text"
+        style="@style/WhatText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/what"
+        android:layout_marginTop="@dimen/margin_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emoji_text" />
+
+    <ImageButton
+        android:id="@+id/menu_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_menu"
+        app:layout_constraintBottom_toBottomOf="@+id/what_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/search_edit_text"
+        style="@style/SearchText"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/search_height"
+        android:background="@drawable/search"
+        android:drawableLeft="@drawable/ic_search"
+        android:drawablePadding="@dimen/search_text_margin"
+        android:text="@string/search"
+        android:layout_marginTop="@dimen/search_margin_top"
+        app:layout_constraintTop_toBottomOf="@+id/what_text" />
+
+    <TextView
+        android:id="@+id/textView"
+        style="@style/MyListsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_mid"
+        android:text="@string/my_lists"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_edit_text" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/margin_recycler"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/add_new_list_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:background="@drawable/button"
+        app:backgroundTint="@null"
+        android:layout_marginBottom="@dimen/margin_max"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:icon="@drawable/ic_pluse"
+        app:iconGravity="textStart"
+        style="@style/ButtonText"
+        android:text="@string/add_new_list"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

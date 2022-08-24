@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <!-- Paddings -->
+    <dimen name="left_right_padding">24dp</dimen>
+    <dimen name="top_padding">20dp</dimen>
+    <dimen name="bottom_padding">32dp</dimen>
+
+    <!-- Margins -->
+    <dimen name="margin_max">32dp</dimen>
+    <dimen name="margin_mid">28dp</dimen>
+    <dimen name="margin_min">16dp</dimen>
+    <dimen name="margin_recycler">20dp</dimen>
+    <dimen name="margin_text">4dp</dimen>
+
+    <!-- Text sizes -->
+    <dimen name="max_text">28sp</dimen>
+    <dimen name="mid_text">16sp</dimen>
+    <dimen name="min_text">12sp</dimen>
+    <dimen name="menu_text">14sp</dimen>
+    <dimen name="title_screen_text">20sp</dimen>
+    <dimen name="my_list_text">18sp</dimen>
+
+    <!-- Button -->
+    <dimen name="button_height">60dp</dimen>
+    <dimen name="button_radius">16dp</dimen>
+
+    <!-- Item -->
+    <dimen name="item_padding">16dp</dimen>
+    <dimen name="item_text_left_margin">8dp</dimen>
+    <dimen name="item_text_margin">8dp</dimen>
+
+    <!-- Search -->
+    <dimen name="search_margin_top">20dp</dimen>
+    <dimen name="search_text">14sp</dimen>
+    <dimen name="search_height">48dp</dimen>
+    <dimen name="search_radius">16dp</dimen>
+    <dimen name="search_text_margin">8dp</dimen>
+    <dimen name="search_padding_left_right">16dp</dimen>
+    <dimen name="search_padding_top_bottom">8dp</dimen>
+
+    <!-- Emoji -->
+    <dimen name="emoji_width">24dp</dimen>
+    <dimen name="emoji_height">24dp</dimen>
+    <dimen name="emoji_margin_left">4dp</dimen>
+
+    <!-- Item -->
+    <dimen name="item_border">1dp</dimen>
+    <dimen name="item_margin_left_right">20dp</dimen>
+    <dimen name="item_margin_top_bottom">16dp</dimen>
+
+</resources>
