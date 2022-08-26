@@ -48,5 +48,6 @@
     <dimen name="item_border">1dp</dimen>
     <dimen name="item_margin_left_right">20dp</dimen>
     <dimen name="item_margin_top_bottom">16dp</dimen>
+    <dimen name="item_height">73dp</dimen>
 
 </resources>

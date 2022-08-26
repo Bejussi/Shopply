@@ -5,7 +5,7 @@ import com.bejussi.shopply.domain.repository.CategoryRepository
 
 class EditCategoryUseCase(private val categoryRepository: CategoryRepository) {
 
-    fun editCategory(category: Category) {
+    suspend operator fun invoke(category: Category) {
         categoryRepository.editCategory(category)
     }
 }

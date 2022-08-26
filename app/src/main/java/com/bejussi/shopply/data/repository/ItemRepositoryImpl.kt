@@ -10,7 +10,7 @@ class ItemRepositoryImpl(
     private val itemDao: ItemDao
 ): ItemRepository {
 
-    override suspend fun getItem(itemId: Int): Item {
+    override fun getItem(itemId: Int): Flow<Item> {
         return itemDao.getItem(itemId)
     }
 

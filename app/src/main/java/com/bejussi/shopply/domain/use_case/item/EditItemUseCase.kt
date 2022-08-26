@@ -5,7 +5,7 @@ import com.bejussi.shopply.domain.repository.ItemRepository
 
 class EditItemUseCase(private val itemRepository: ItemRepository) {
 
-    fun editItem(item: Item) {
+    suspend operator fun invoke(item: Item) {
         itemRepository.editItem(item)
     }
 }

@@ -5,7 +5,7 @@ import com.bejussi.shopply.domain.repository.ItemRepository
 
 class DeleteItemUseCase(private val itemRepository: ItemRepository) {
 
-    fun deleteItem(item: Item) {
+    suspend operator fun invoke(item: Item) {
         itemRepository.deleteItem(item)
     }
 }
