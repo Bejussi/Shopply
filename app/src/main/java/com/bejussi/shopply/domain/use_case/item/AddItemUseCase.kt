@@ -5,7 +5,7 @@ import com.bejussi.shopply.domain.repository.ItemRepository
 
 class AddItemUseCase(private val itemRepository: ItemRepository) {
 
-    fun addItem(item: Item) {
+    suspend operator fun invoke(item: Item) {
         itemRepository.addItem(item)
     }
 }

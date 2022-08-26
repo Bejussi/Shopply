@@ -4,14 +4,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="73dp"
-    android:background="@drawable/item_background">
+    android:layout_height="@dimen/item_height"
+    android:background="@drawable/item_background"
+    android:orientation="vertical"
+    android:layout_marginBottom="@dimen/margin_min">
 
-    <ImageView
+    <TextView
         android:id="@+id/category_emoji_image"
         android:layout_width="@dimen/emoji_width"
-        android:src="@drawable/ic_category"
         android:layout_height="@dimen/emoji_height"
+        android:text="@string/emoji"
+        android:textSize="@dimen/my_list_text"
+        android:textColor="@color/black"
         android:layout_marginLeft="@dimen/item_margin_left_right"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

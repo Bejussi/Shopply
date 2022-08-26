@@ -5,7 +5,7 @@ import com.bejussi.shopply.domain.repository.CategoryRepository
 
 class DeleteCategoryUseCase(private val categoryRepository: CategoryRepository) {
 
-    fun deleteCategory(category: Category) {
+    suspend operator fun invoke(category: Category) {
         categoryRepository.deleteCategory(category)
     }
 }
