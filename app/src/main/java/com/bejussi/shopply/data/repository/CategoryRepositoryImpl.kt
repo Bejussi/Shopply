@@ -28,4 +28,8 @@ class CategoryRepositoryImpl(
     override suspend fun addCategory(category: Category) {
         categoryDao.addCategory(category)
     }
+
+    override fun searchQuery(search: String): Flow<List<Category>> {
+        return categoryDao.searchQuery(search)
+    }
 }

@@ -53,7 +53,8 @@ object AppModule {
             getCategoryListUseCase = GetCategoryListUseCase(repository),
             editCategoryUseCase = EditCategoryUseCase(repository),
             deleteCategoryUseCase = DeleteCategoryUseCase(repository),
-            addCategoryUseCase = AddCategoryUseCase(repository)
+            addCategoryUseCase = AddCategoryUseCase(repository),
+            searchCategoryUseCase = SearchCategoryUseCase(repository)
         )
     }
 

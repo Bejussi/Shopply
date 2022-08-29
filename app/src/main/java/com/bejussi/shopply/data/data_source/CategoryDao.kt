@@ -1,5 +1,6 @@
 package com.bejussi.shopply.data.data_source
 
+import android.icu.text.StringSearch
 import androidx.room.*
 import com.bejussi.shopply.domain.model.Category
 import kotlinx.coroutines.flow.Flow
@@ -21,4 +22,7 @@ interface CategoryDao {
 
     @Delete
     suspend fun deleteCategory(category: Category)
+
+    @Query("SELECT * FROM category WHERE name LIKE :search")
+    fun searchQuery(search: String): Flow<List<Category>>
 }

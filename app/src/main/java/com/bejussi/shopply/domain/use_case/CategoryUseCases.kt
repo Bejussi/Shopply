@@ -7,5 +7,6 @@ data class CategoryUseCases(
     val getCategoryUseCase: GetCategoryUseCase,
     val editCategoryUseCase: EditCategoryUseCase,
     val deleteCategoryUseCase: DeleteCategoryUseCase,
-    val addCategoryUseCase: AddCategoryUseCase
+    val addCategoryUseCase: AddCategoryUseCase,
+    val searchCategoryUseCase: SearchCategoryUseCase
 )
