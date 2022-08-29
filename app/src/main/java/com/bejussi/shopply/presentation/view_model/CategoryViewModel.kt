@@ -33,9 +33,7 @@ class CategoryViewModel @Inject constructor(
         }
     }
 
-    fun getCategory(name: String) {
-        viewModelScope.launch {
-            categoryUseCases.getCategoryUseCase(name)
-        }
+    fun searchCategory(search: String): LiveData<List<Category>> {
+        return categoryUseCases.searchCategoryUseCase(search).asLiveData()
     }
 }

@@ -45,9 +45,22 @@
     <dimen name="emoji_margin_left">4dp</dimen>
 
     <!-- Item -->
-    <dimen name="item_border">1dp</dimen>
+    <dimen name="item_border">2dp</dimen>
     <dimen name="item_margin_left_right">20dp</dimen>
     <dimen name="item_margin_top_bottom">16dp</dimen>
     <dimen name="item_height">73dp</dimen>
+
+    <!-- Dialog -->
+    <dimen name="margin_between_edit_text">12dp</dimen>
+    <dimen name="dialog_edit_text_height">48dp</dimen>
+    <dimen name="dialog_edit_text_width">48dp</dimen>
+    <dimen name="dialog_width">292dp</dimen>
+    <dimen name="dialog_height">237dp</dimen>
+
+    <!-- Dialog Button-->
+    <dimen name="dialog_button_height">48dp</dimen>
+    <dimen name="dialog_button_width">116dp</dimen>
+    <dimen name="dialog_button_margin_top">24dp</dimen>
+    <dimen name="dialog_radius">32dp</dimen>
 
 </resources>
