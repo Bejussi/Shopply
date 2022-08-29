@@ -6,14 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bejussi.shopply.R
 import com.bejussi.shopply.databinding.FragmentCategoryListBinding
 import com.bejussi.shopply.domain.model.Category
 import com.bejussi.shopply.presentation.adapter.CategoryListAdapter
+import com.bejussi.shopply.presentation.dialog.add_category_dialog.AddCategoryDialog
+import com.bejussi.shopply.presentation.dialog.add_category_dialog.AddCategoryDialogListener
+import com.bejussi.shopply.presentation.dialog.edit_category_dialog.EditCategoryDialog
+import com.bejussi.shopply.presentation.dialog.edit_category_dialog.EditCategoryDialogListener
+import com.bejussi.shopply.presentation.view_model.CategoryActionListener
 import com.bejussi.shopply.presentation.view_model.CategoryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -45,13 +47,39 @@ class CategoryListFragment : Fragment() {
         }
 
         setupRecyclerView()
+
+        binding.addNewListButton.setOnClickListener {
+            AddCategoryDialog(requireContext(),
+            object : AddCategoryDialogListener {
+                override fun addCategory(category: Category) {
+                    viewModel.insertCategory(category)
+                }
+            }).show()
+        }
     }
 
     private fun setupRecyclerView() {
-        adapter = CategoryListAdapter {
-            val action = CategoryListFragmentDirections.actionCategoryListFragmentToItemListFragment()
-            this.findNavController().navigate(action)
-        }
+        adapter = CategoryListAdapter(object : CategoryActionListener {
+
+            override fun onCategoryDelete(category: Category) {
+                viewModel.deleteCategory(category)
+            }
+
+            override fun onCategoryEdit(category: Category) {
+                EditCategoryDialog(requireContext(),
+                object : EditCategoryDialogListener {
+                    override fun editCategory(category: Category) {
+                        viewModel.editCategory(category)
+                    }
+                }, category).show()
+            }
+
+            override fun onShowCategoryProductsList(categoryName: String) {
+                val action = CategoryListFragmentDirections.actionCategoryListFragmentToItemListFragment(categoryName)
+                findNavController().navigate(action)
+            }
+
+        })
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
     }
