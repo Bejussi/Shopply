@@ -56,7 +56,7 @@
         android:background="@drawable/search"
         android:drawableLeft="@drawable/ic_search"
         android:drawablePadding="@dimen/search_text_margin"
-        android:text="@string/search"
+        android:hint="@string/search"
         android:layout_marginTop="@dimen/search_margin_top"
         app:layout_constraintTop_toBottomOf="@+id/what_text" />
 

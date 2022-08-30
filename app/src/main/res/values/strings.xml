@@ -15,4 +15,5 @@
     <string name="cancel">Cancel</string>
     <string name="dialog_toast">Please enter all the information</string>
     <string name="edit_list">Edit list</string>
+    <string name="add_new_item">Add new item</string>
 </resources>

@@ -50,6 +50,13 @@
     <dimen name="item_margin_top_bottom">16dp</dimen>
     <dimen name="item_height">73dp</dimen>
 
+    <!-- Item items -->
+    <dimen name="item_items_border">2dp</dimen>
+    <dimen name="item_items_margin_left_right">20dp</dimen>
+    <dimen name="item_items_checkbox_margin_top_bottom">15dp</dimen>
+    <dimen name="item_items_height">56dp</dimen>
+    <dimen name="count_text">12dp</dimen>
+
     <!-- Dialog -->
     <dimen name="margin_between_edit_text">12dp</dimen>
     <dimen name="dialog_edit_text_height">48dp</dimen>
@@ -62,5 +69,9 @@
     <dimen name="dialog_button_width">116dp</dimen>
     <dimen name="dialog_button_margin_top">24dp</dimen>
     <dimen name="dialog_radius">32dp</dimen>
+
+    <!-- CheckBox-->
+    <dimen name="checkbox_height">24dp</dimen>
+    <dimen name="checkbox_width">24dp</dimen>
 
 </resources>
