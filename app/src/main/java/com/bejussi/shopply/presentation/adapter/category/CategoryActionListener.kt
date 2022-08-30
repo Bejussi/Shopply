@@ -1,4 +1,4 @@
-package com.bejussi.shopply.presentation.view_model
+package com.bejussi.shopply.presentation.adapter.category
 
 import com.bejussi.shopply.domain.model.Category
 

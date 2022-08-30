@@ -1,19 +1,15 @@
-package com.bejussi.shopply.presentation.adapter
+package com.bejussi.shopply.presentation.adapter.category
 
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.PopupMenu
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bejussi.shopply.R
 import com.bejussi.shopply.databinding.ItemCategoryBinding
 import com.bejussi.shopply.domain.model.Category
-import com.bejussi.shopply.presentation.view_model.CategoryActionListener
-import com.bejussi.shopply.presentation.view_model.CategoryViewModel
 
 class CategoryListAdapter(
     private val categoryActionListener: CategoryActionListener
