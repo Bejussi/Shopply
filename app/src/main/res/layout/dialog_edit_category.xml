@@ -31,7 +31,7 @@
 
     <EditText
         android:id="@+id/name_edit_text"
-        style="@style/SearchText"
+        style="@style/EditText"
         android:layout_width="0dp"
         android:layout_height="@dimen/dialog_edit_text_height"
         android:layout_marginTop="@dimen/margin_mid"

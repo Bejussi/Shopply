@@ -1,19 +1,23 @@
 package com.bejussi.shopply.presentation
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bejussi.shopply.R
+import androidx.recyclerview.widget.RecyclerView
 import com.bejussi.shopply.databinding.FragmentItemListBinding
 import com.bejussi.shopply.domain.model.Item
+import com.bejussi.shopply.presentation.adapter.item.ItemActionListener
 import com.bejussi.shopply.presentation.adapter.item.ItemListAdapter
+import com.bejussi.shopply.presentation.dialog.add_item_dialig.AddItemDialog
+import com.bejussi.shopply.presentation.dialog.add_item_dialig.AddItemDialogListener
+import com.bejussi.shopply.presentation.utils.SwipeToDelete
 import com.bejussi.shopply.presentation.view_model.ItemViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -49,12 +53,46 @@ class ItemListFragment : Fragment() {
         }
 
         setupRecyclerView()
+
+        binding.backButton.setOnClickListener {
+            val action = ItemListFragmentDirections.actionItemListFragmentToCategoryListFragment()
+            findNavController().navigate(action)
+        }
+
+        binding.addNewItemButton.setOnClickListener {
+            AddItemDialog(requireContext(),
+            object : AddItemDialogListener {
+                override fun addItem(item: Item) {
+                    viewModel.insertItem(item)
+                }
+
+            }, args.categoryName).show()
+        }
     }
 
     private fun setupRecyclerView() {
-        adapter = ItemListAdapter()
+        adapter = ItemListAdapter(object : ItemActionListener {
+
+            override fun onItemEdit(item: Item) {
+                viewModel.editItem(item)
+            }
+
+        })
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
+
+        swipeToDelete(binding.recyclerView)
+    }
+
+    private fun swipeToDelete(recyclerView: RecyclerView) {
+        val swipeToDeleteCallback = object : SwipeToDelete() {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val itemDelete = adapter.currentList[viewHolder.adapterPosition]
+                viewModel.deleteItem(itemDelete)
+            }
+        }
+        val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallback)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
     }
 
 }
