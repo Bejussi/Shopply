@@ -9,7 +9,9 @@ import com.bejussi.shopply.databinding.ItemItemsCategoryBinding
 import com.bejussi.shopply.domain.model.Category
 import com.bejussi.shopply.domain.model.Item
 
-class ItemListAdapter: ListAdapter<Item, ItemListAdapter.ItemViewHolder>(DiffCallback) {
+class ItemListAdapter(
+    private val itemActionListener: ItemActionListener
+): ListAdapter<Item, ItemListAdapter.ItemViewHolder>(DiffCallback) {
 
     class ItemViewHolder(
         val binding: ItemItemsCategoryBinding
@@ -43,11 +45,20 @@ class ItemListAdapter: ListAdapter<Item, ItemListAdapter.ItemViewHolder>(DiffCal
             checkBox.isChecked = currentItem.bought
 
             plusButton.setOnClickListener {
-
+                currentItem.count++
+                itemActionListener.onItemEdit(currentItem)
             }
 
             minusButton.setOnClickListener {
+                if (currentItem.count > 1) {
+                    currentItem.count--
+                    itemActionListener.onItemEdit(currentItem)
+                }
+            }
 
+            checkBox.setOnClickListener {
+                currentItem.bought = checkBox.isChecked
+                itemActionListener.onItemEdit(currentItem)
             }
         }
         holder.bind(currentItem)

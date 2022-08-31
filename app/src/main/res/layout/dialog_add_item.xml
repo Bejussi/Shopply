@@ -11,37 +11,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_max"
-        android:text="@string/add_new_list"
+        android:text="@string/add_new_item"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/emoji_edit_text"
-        style="@style/SearchText"
+        android:id="@+id/count_edit_text"
+        style="@style/EditText"
         android:layout_width="@dimen/dialog_edit_text_width"
         android:layout_height="@dimen/dialog_edit_text_height"
-        android:background="@drawable/search"
-        android:hint="@string/emoji"
         android:layout_marginTop="@dimen/margin_mid"
-        android:layout_marginLeft="@dimen/left_right_padding"
         android:layout_marginRight="@dimen/left_right_padding"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_text" />
+        android:background="@drawable/search"
+        android:hint="@string/count"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_text"/>
 
     <EditText
         android:id="@+id/name_edit_text"
         style="@style/EditText"
         android:layout_width="0dp"
         android:layout_height="@dimen/dialog_edit_text_height"
+        android:layout_marginLeft="@dimen/left_right_padding"
         android:layout_marginTop="@dimen/margin_mid"
-        android:layout_marginRight="@dimen/left_right_padding"
-        android:layout_marginLeft="@dimen/margin_between_edit_text"
+        android:layout_marginRight="@dimen/margin_between_edit_text"
         android:background="@drawable/search"
-        android:inputType="text"
         android:hint="@string/enter_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/emoji_edit_text"
+        android:inputType="text"
+        app:layout_constraintEnd_toStartOf="@+id/count_edit_text"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_text" />
 
     <androidx.appcompat.widget.AppCompatButton
