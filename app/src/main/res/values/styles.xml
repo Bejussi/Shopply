@@ -74,4 +74,17 @@
         <item name="android:fontFamily">@font/roboto_regular</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
+    <style name="SettingParagraphText" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/my_list_text</item>
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="ItemTitleLanguageText" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/mid_text</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textColor">@color/blue</item>
+    </style>
+
 </resources>

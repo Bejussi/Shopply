@@ -50,6 +50,11 @@ class CategoryListFragment : Fragment() {
 
         setupRecyclerView()
 
+        binding.menuButton.setOnClickListener {
+            val action = CategoryListFragmentDirections.actionCategoryListFragmentToSettingsFragment()
+            findNavController().navigate(action)
+        }
+
         binding.addNewListButton.setOnClickListener {
             AddCategoryDialog(requireContext(),
             object : AddCategoryDialogListener {
