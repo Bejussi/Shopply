@@ -17,4 +17,7 @@
     <string name="edit_list">Edit list</string>
     <string name="add_new_item">Add new item</string>
     <string name="count">1</string>
+    <string name="delete_checked">Delete checked</string>
+    <string name="clean_list">Clean list</string>
+    <string name="sort_by_name">Sort by name</string>
 </resources>

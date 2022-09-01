@@ -1,6 +1,8 @@
 package com.bejussi.shopply.presentation.dialog.add_category_dialog
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -24,8 +26,7 @@ class AddCategoryDialog(
 
         _binding = DialogAddCategoryBinding.inflate(LayoutInflater.from(context))
         setContentView(binding.root)
-        window
-            ?.setLayout(
+        window?.setLayout(
                 ViewGroup.LayoutParams.FILL_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
             )

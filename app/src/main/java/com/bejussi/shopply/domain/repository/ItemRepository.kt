@@ -15,4 +15,10 @@ interface ItemRepository {
     suspend fun deleteItem(item: Item)
 
     suspend fun addItem(item: Item)
+
+    suspend fun cleanItemsList(categoryName: String)
+
+    suspend fun deleteCheckedItems(categoryName: String)
+
+    fun sortByName(categoryName: String): Flow<List<Item>>
 }

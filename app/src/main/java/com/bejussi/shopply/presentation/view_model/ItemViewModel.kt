@@ -18,6 +18,7 @@ class ItemViewModel @Inject constructor(
     val categoryName = state.get<String>(CATEGORY_STATE_KEY)!!
 
     val allItems: LiveData<List<Item>> = itemUseCases.getItemsListUseCase(categoryName).asLiveData()
+    val sortedItems: LiveData<List<Item>> = itemUseCases.sortByNameUseCase(categoryName).asLiveData()
 
     fun insertItem(item: Item) {
         viewModelScope.launch {
@@ -37,9 +38,15 @@ class ItemViewModel @Inject constructor(
         }
     }
 
-    fun getItem(id: Int) {
+    fun deleteCheckedItems(categoryName: String) {
         viewModelScope.launch {
-            itemUseCases.getItemUseCase(id)
+            itemUseCases.deleteCheckedItemsUseCase(categoryName)
+        }
+    }
+
+    fun cleanItemsList(categoryName: String) {
+        viewModelScope.launch {
+            itemUseCases.cleanItemsListUseCase(categoryName)
         }
     }
 

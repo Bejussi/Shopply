@@ -5,13 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bejussi.shopply.R
 import com.bejussi.shopply.databinding.FragmentItemListBinding
+import com.bejussi.shopply.domain.model.Category
 import com.bejussi.shopply.domain.model.Item
 import com.bejussi.shopply.presentation.adapter.item.ItemActionListener
 import com.bejussi.shopply.presentation.adapter.item.ItemListAdapter
@@ -46,8 +49,8 @@ class ItemListFragment : Fragment() {
 
         binding.categoryNameText.text = args.categoryName
 
-        viewModel.allItems.observe(this.viewLifecycleOwner) {
-            items -> items.let {
+        viewModel.allItems.observe(this.viewLifecycleOwner) { items ->
+            items.let {
                 adapter.submitList(it)
             }
         }
@@ -61,13 +64,46 @@ class ItemListFragment : Fragment() {
 
         binding.addNewItemButton.setOnClickListener {
             AddItemDialog(requireContext(),
-            object : AddItemDialogListener {
-                override fun addItem(item: Item) {
-                    viewModel.insertItem(item)
-                }
+                object : AddItemDialogListener {
+                    override fun addItem(item: Item) {
+                        viewModel.insertItem(item)
+                    }
 
-            }, args.categoryName).show()
+                }, args.categoryName
+            ).show()
         }
+
+        binding.menuButton.setOnClickListener {
+            popupMenu(it)
+        }
+    }
+
+    private fun popupMenu(view: View) {
+        val popupMenu = PopupMenu(view.context, view)
+        popupMenu.inflate(R.menu.item_list_menu)
+        popupMenu.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.sort_by_items -> {
+                    viewModel.sortedItems.observe(this.viewLifecycleOwner) { items ->
+                        items.let {
+                            adapter.submitList(it)
+                        }
+                    }
+                    true
+                }
+                R.id.delete_checked_items -> {
+                    viewModel.deleteCheckedItems(args.categoryName)
+                    true
+                }
+                R.id.clean_items_list -> {
+                    viewModel.cleanItemsList(args.categoryName)
+                    true
+                }
+                else -> false
+            }
+        }
+        popupMenu.setForceShowIcon(true)
+        popupMenu.show()
     }
 
     private fun setupRecyclerView() {
