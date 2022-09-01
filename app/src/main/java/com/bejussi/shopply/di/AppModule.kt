@@ -66,7 +66,10 @@ object AppModule {
             getItemsListUseCase = GetItemsListUseCase(repository),
             editItemUseCase = EditItemUseCase(repository),
             deleteItemUseCase = DeleteItemUseCase(repository),
-            addItemUseCase = AddItemUseCase(repository)
+            addItemUseCase = AddItemUseCase(repository),
+            cleanItemsListUseCase = CleanItemsListUseCase(repository),
+            deleteCheckedItemsUseCase = DeleteCheckedItemsUseCase(repository),
+            sortByNameUseCase = SortByNameUseCase(repository)
         )
     }
 }

@@ -21,4 +21,13 @@ interface ItemDao {
 
     @Delete
     suspend fun deleteItem(item: Item)
+
+    @Query("DELETE FROM item WHERE category = :categoryName")
+    suspend fun cleanItemsList(categoryName: String)
+
+    @Query("DELETE FROM item WHERE category = :categoryName AND bought = 1")
+    suspend fun deleteCheckedItems(categoryName: String)
+
+    @Query("SELECT* FROM item WHERE category = :categoryName ORDER BY name")
+    fun sortByName(categoryName: String): Flow<List<Item>>
 }

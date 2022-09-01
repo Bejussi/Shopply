@@ -7,5 +7,8 @@ data class ItemUseCases(
     val getItemUseCase: GetItemUseCase,
     val editItemUseCase: EditItemUseCase,
     val deleteItemUseCase: DeleteItemUseCase,
-    val addItemUseCase: AddItemUseCase
+    val addItemUseCase: AddItemUseCase,
+    val cleanItemsListUseCase: CleanItemsListUseCase,
+    val deleteCheckedItemsUseCase: DeleteCheckedItemsUseCase,
+    val sortByNameUseCase: SortByNameUseCase
 )

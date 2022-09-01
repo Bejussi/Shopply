@@ -29,4 +29,16 @@ class ItemRepositoryImpl(
     override suspend fun addItem(item: Item) {
         itemDao.addItem(item)
     }
+
+    override suspend fun cleanItemsList(categoryName: String) {
+        itemDao.cleanItemsList(categoryName)
+    }
+
+    override suspend fun deleteCheckedItems(categoryName: String) {
+        itemDao.deleteCheckedItems(categoryName)
+    }
+
+    override fun sortByName(categoryName: String): Flow<List<Item>> {
+        return itemDao.sortByName(categoryName)
+    }
 }
