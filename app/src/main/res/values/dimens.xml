@@ -74,4 +74,7 @@
     <dimen name="checkbox_height">24dp</dimen>
     <dimen name="checkbox_width">24dp</dimen>
 
+    <!-- Settings item-->
+    <dimen name="margin_settings_items">24dp</dimen>
+
 </resources>
