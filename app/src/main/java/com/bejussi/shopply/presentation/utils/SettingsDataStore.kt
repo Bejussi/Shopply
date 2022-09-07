@@ -1,51 +1,52 @@
 package com.bejussi.shopply.presentation.utils
 
 import android.content.Context
+import androidx.datastore.core.DataStore
 import androidx.datastore.dataStore
+import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
 
 private const val SETTINGS_PREFERENCES_NAME = "settings_preferences"
+val Context.datastore : DataStore< Preferences> by  preferencesDataStore(name = SETTINGS_PREFERENCES_NAME)
 
 class SettingsDataStore(private val context: Context) {
 
-    private val Context.dataStore by preferencesDataStore(
-        name = SETTINGS_PREFERENCES_NAME
-    )
-
-    val language: Flow<String> = context.dataStore.data
+    val language: Flow<String> = context.datastore.data
         .map { preferences ->
             preferences[PreferencesKeys.LANGUAGE]?: "English"
         }
 
-    val notification: Flow<Boolean> = context.dataStore.data
+    val notification: Flow<Boolean> = context.datastore.data
         .map { preferences ->
             preferences[PreferencesKeys.NOTIFICATION]?: true
         }
 
-    val darkTheme: Flow<Boolean> = context.dataStore.data
+    val darkTheme: Flow<Boolean> = context.datastore.data
         .map { preferences ->
             preferences[PreferencesKeys.DARK_THEME]?: false
         }
 
     suspend fun updateLanguage(language: String) {
-        context.dataStore.edit { preferences ->
+        context.datastore.edit { preferences ->
             preferences[PreferencesKeys.LANGUAGE] = language
         }
     }
 
     suspend fun updateNotification(notification: Boolean) {
-        context.dataStore.edit { preferences ->
+        context.datastore.edit { preferences ->
             preferences[PreferencesKeys.NOTIFICATION] = notification
         }
     }
 
     suspend fun updateDarkTheme(darkTheme: Boolean) {
-        context.dataStore.edit { preferences ->
+        context.datastore.edit { preferences ->
             preferences[PreferencesKeys.DARK_THEME] = darkTheme
         }
     }

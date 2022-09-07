@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Shopply</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello">Привет</string>
+    <string name="emoji">👋</string>
+    <string name="what">Что мы покупаем сегодня?</string>
+    <string name="search">Поиск списка</string>
+    <string name="my_lists">Мои списки</string>
+    <string name="add_new_list">Добавить новый список</string>
+    <string name="edit">Редактировать</string>
+    <string name="delete">Удалить</string>
+    <string name="enter_name">Введите название</string>
+    <string name="add">Добавить</string>
+    <string name="cancel">Отменп</string>
+    <string name="dialog_toast">Пожалуйста, введите всю информацию</string>
+    <string name="edit_list">Редактировать список</string>
+    <string name="add_new_item">Добавить новый элемент</string>
+    <string name="count">1</string>
+    <string name="delete_checked">Удалить отмеченное</string>
+    <string name="clean_list">Очистить список</string>
+    <string name="sort_by_name">Сортировать по имени</string>
+    <string name="settings">Настройки</string>
+    <string name="general">Общие</string>
+    <string name="language">Язык</string>
+    <string name="english">English</string>
+    <string name="notification">Уведомления</string>
+    <string name="dark_mode">Темный режим</string>
+    <string name="about">О нас</string>
+    <string name="privacy_policy">Политика конфиденциальности</string>
+    <string name="help">Помощь</string>
+</resources>
