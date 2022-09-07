@@ -86,15 +86,14 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"
         android:background="@drawable/button"
-        app:backgroundTint="@null"
         android:layout_marginBottom="@dimen/margin_max"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:icon="@drawable/ic_pluse"
+        app:iconTint="@color/icon_tint"
         app:iconGravity="textStart"
         style="@style/ButtonText"
         android:text="@string/add_new_list"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

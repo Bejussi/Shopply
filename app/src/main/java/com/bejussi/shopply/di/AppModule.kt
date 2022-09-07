@@ -1,9 +1,8 @@
 package com.bejussi.shopply.di
 
 import android.app.Application
+import android.content.Context
 import androidx.room.Room
-import com.bejussi.shopply.data.data_source.CategoryDao
-import com.bejussi.shopply.data.data_source.ItemDao
 import com.bejussi.shopply.data.data_source.ShoppingListDatabase
 import com.bejussi.shopply.data.repository.CategoryRepositoryImpl
 import com.bejussi.shopply.data.repository.ItemRepositoryImpl
@@ -13,9 +12,11 @@ import com.bejussi.shopply.domain.use_case.CategoryUseCases
 import com.bejussi.shopply.domain.use_case.ItemUseCases
 import com.bejussi.shopply.domain.use_case.category.*
 import com.bejussi.shopply.domain.use_case.item.*
+import com.bejussi.shopply.presentation.utils.SettingsDataStore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -72,4 +73,9 @@ object AppModule {
             sortByNameUseCase = SortByNameUseCase(repository)
         )
     }
+
+    @Singleton
+    @Provides
+    fun provideSettingsDataStore(@ApplicationContext appContext: Context): SettingsDataStore =
+        SettingsDataStore(appContext)
 }
