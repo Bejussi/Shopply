@@ -29,4 +29,9 @@
     <string name="about">About</string>
     <string name="privacy_policy">Privacy policy</string>
     <string name="help">Help</string>
+    <string-array name="language">
+        <item>English</item>
+        <item>Ukrainian</item>
+        <item>Russian</item>
+    </string-array>
 </resources>

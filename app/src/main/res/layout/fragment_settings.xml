@@ -62,13 +62,14 @@
             android:layout_toEndOf="@+id/icon_language"
             android:text="@string/language" />
 
-        <TextView
+        <Spinner
             android:id="@+id/language_choice"
             style="@style/ItemTitleLanguageText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
+            android:entries="@array/language"
             android:text="@string/english" />
 
     </RelativeLayout>
