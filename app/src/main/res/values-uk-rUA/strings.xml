@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Shopply</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello">Привіт</string>
+    <string name="emoji">👋</string>
+    <string name="what">Що ми купуємо сьогодні?</string>
+    <string name="search">Пошук списку</string>
+    <string name="my_lists">Мої списки</string>
+    <string name="add_new_list">Додати новий список</string>
+    <string name="edit">Редагувати</string>
+    <string name="delete">Видалити</string>
+    <string name="enter_name">Введіть назву</string>
+    <string name="add">Додати</string>
+    <string name="cancel">Скасувати</string>
+    <string name="dialog_toast">Будь ласка, введіть всю інформацію</string>
+    <string name="edit_list">Редагувати список</string>
+    <string name="add_new_item">Додати новий елемент</string>
+    <string name="count">1</string>
+    <string name="delete_checked">Видалити виконане</string>
+    <string name="clean_list">Очистити список</string>
+    <string name="sort_by_name">Сортувати за іменем</string>
+    <string name="settings">Налаштування</string>
+    <string name="general">Загальні</string>
+    <string name="language">Мова</string>
+    <string name="english">Англійська</string>
+    <string name="notification">Сповіщення</string>
+    <string name="dark_mode">Темний режим</string>
+    <string name="about">Про нас</string>
+    <string name="privacy_policy">Політика конфіденційності</string>
+    <string name="help">Допомога</string>
+    <string-array name="language">
+        <item>English</item>
+        <item>Ukrainian</item>
+        <item>Russian</item>
+    </string-array>
+</resources>

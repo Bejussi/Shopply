@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.bejussi.shopply.R
 import com.bejussi.shopply.databinding.FragmentSettingsBinding
 import com.bejussi.shopply.presentation.utils.SettingsDataStore
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,13 +36,19 @@ class SettingsFragment : Fragment() {
 
         settingsDataStore = SettingsDataStore(requireContext())
 
-        settingsDataStore.darkTheme.asLiveData().observe(viewLifecycleOwner) { theme ->
-            theme.let {
-                binding.themeChoice.isChecked = theme
-            }
-        }
+        observeData()
 
-        binding.languageChoice.setOnClickListener {
+        binding.languageChoice.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val selectedLanguage = adapterView?.getItemAtPosition(position).toString()
+                lifecycleScope.launch {
+                    settingsDataStore.updateLanguage(selectedLanguage)
+                }
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+
+            }
 
         }
 
@@ -63,6 +71,22 @@ class SettingsFragment : Fragment() {
         binding.backButton.setOnClickListener {
             val action = SettingsFragmentDirections.actionSettingsFragmentToCategoryListFragment()
             findNavController().navigate(action)
+        }
+    }
+
+    private fun observeData() {
+        settingsDataStore.darkTheme.asLiveData().observe(viewLifecycleOwner) { theme ->
+            theme.let {
+                binding.themeChoice.isChecked = theme
+            }
+        }
+        settingsDataStore.language.asLiveData().observe(viewLifecycleOwner) { language ->
+            language.let {
+                binding.languageChoice.apply {
+                    setSelection(resources.getStringArray(R.array.language).indexOf(language));
+                }
+
+            }
         }
     }
 
