@@ -41,7 +41,7 @@ android {
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.8.0'
-    implementation 'androidx.appcompat:appcompat:1.5.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
@@ -50,8 +50,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
 
     // Navigation libraries
-    implementation "androidx.navigation:navigation-fragment-ktx:2.5.1"
-    implementation "androidx.navigation:navigation-ui-ktx:2.5.1"
+    implementation "androidx.navigation:navigation-fragment-ktx:2.5.2"
+    implementation "androidx.navigation:navigation-ui-ktx:2.5.2"
 
     // Room
     implementation "androidx.room:room-runtime:2.4.3"
@@ -71,4 +71,7 @@ dependencies {
 
     //Preference DataStore
     implementation "androidx.datastore:datastore-preferences:1.0.0"
+
+    //WorkManager
+    implementation "androidx.work:work-runtime-ktx:2.7.1"
 }

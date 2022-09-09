@@ -46,10 +46,7 @@ class SettingsFragment : Fragment() {
                 }
             }
 
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-
-            }
-
+            override fun onNothingSelected(p0: AdapterView<*>?) { }
         }
 
         binding.themeChoice.setOnCheckedChangeListener { _, isChecked ->
@@ -64,8 +61,16 @@ class SettingsFragment : Fragment() {
             }
         }
 
-        binding.notificationChoice.setOnClickListener {
-
+        binding.notificationChoice.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                lifecycleScope.launch {
+                    settingsDataStore.updateNotification(true)
+                }
+            } else {
+                lifecycleScope.launch {
+                    settingsDataStore.updateNotification(false)
+                }
+            }
         }
 
         binding.backButton.setOnClickListener {
@@ -87,6 +92,12 @@ class SettingsFragment : Fragment() {
                 }
 
             }
+        }
+        settingsDataStore.notification.asLiveData().observe(viewLifecycleOwner) { notification ->
+            notification.let {
+                binding.notificationChoice.isChecked = notification
+            }
+
         }
     }
 
