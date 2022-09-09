@@ -1,18 +1,19 @@
 package com.bejussi.shopply.presentation
 
 import android.app.Activity
-import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.asLiveData
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.work.*
 import com.bejussi.shopply.R
+import com.bejussi.shopply.presentation.utils.NotificationWorker
 import com.bejussi.shopply.presentation.utils.SettingsDataStore
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
@@ -48,6 +49,13 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
         }
 
+        settingsDataStore.notification.asLiveData().observe(this) { notification ->
+            notification.let {
+                periodicNotificationWork(notification)
+            }
+
+        }
+
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
@@ -73,6 +81,30 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         configuration.setLayoutDirection(locale)
 
         resources.updateConfiguration(configuration, resources.displayMetrics)
+    }
+
+    private fun periodicNotificationWork(showNotification: Boolean) {
+        if (showNotification) {
+            setNotification()
+        } else {
+            return
+        }
+    }
+
+    private fun setNotification() {
+        val constraints = Constraints.Builder()
+            .setRequiredNetworkType(NetworkType.NOT_REQUIRED)
+            .build()
+
+        val workRequest = PeriodicWorkRequest.Builder(
+            NotificationWorker::class.java,
+            1,
+            TimeUnit.DAYS
+        ).setConstraints(constraints)
+            .addTag("periodic_notification")
+            .build()
+
+        WorkManager.getInstance(this).enqueueUniquePeriodicWork("periodic_notification", ExistingPeriodicWorkPolicy.KEEP, workRequest)
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -4,6 +4,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hello">Привет</string>
+    <string name="title_notification">Привет 👋 Это Shopply</string>
+    <string name="message_notification">Пойдем сегодня за покупками? 👀</string>
     <string name="emoji">👋</string>
     <string name="what">Что мы покупаем сегодня?</string>
     <string name="search">Поиск списка</string>
