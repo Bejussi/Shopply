@@ -16,6 +16,12 @@
         <action
             android:id="@+id/action_categoryListFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_categoryListFragment_to_addNewListSheet"
+            app:destination="@id/addNewListSheet" />
+        <action
+            android:id="@+id/action_categoryListFragment_to_editCategorySheet"
+            app:destination="@id/editCategorySheet" />
     </fragment>
     <fragment
         android:id="@+id/itemListFragment"
@@ -28,6 +34,9 @@
         <argument
             android:name="categoryName"
             app:argType="string" />
+        <action
+            android:id="@+id/action_itemListFragment_to_addNewItemSheet"
+            app:destination="@id/addNewItemSheet" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -38,4 +47,34 @@
             android:id="@+id/action_settingsFragment_to_categoryListFragment"
             app:destination="@id/categoryListFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/addNewListSheet"
+        android:name="com.bejussi.shopply.presentation.sheet_dialog.AddNewListSheet"
+        android:label="fragment_add_new_list_sheet"
+        tools:layout="@layout/fragment_add_new_list_sheet" >
+        <action
+            android:id="@+id/action_addNewListSheet_to_categoryListFragment"
+            app:destination="@id/categoryListFragment" />
+    </dialog>
+    <dialog
+        android:id="@+id/addNewItemSheet"
+        android:name="com.bejussi.shopply.presentation.sheet_dialog.AddNewItemSheet"
+        android:label="fragment_add_new_item_sheet"
+        tools:layout="@layout/fragment_add_new_item_sheet" >
+        <action
+            android:id="@+id/action_addNewItemSheet_to_itemListFragment"
+            app:destination="@id/itemListFragment" />
+        <argument
+            android:name="categoryName"
+            app:argType="string" />
+    </dialog>
+    <dialog
+        android:id="@+id/editCategorySheet"
+        android:name="com.bejussi.shopply.presentation.sheet_dialog.EditCategorySheet"
+        android:label="fragment_edit_category_sheet"
+        tools:layout="@layout/fragment_edit_category_sheet" >
+        <action
+            android:id="@+id/action_editCategorySheet_to_categoryListFragment"
+            app:destination="@id/categoryListFragment" />
+    </dialog>
 </navigation>
