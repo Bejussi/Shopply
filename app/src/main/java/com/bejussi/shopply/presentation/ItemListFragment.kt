@@ -14,12 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bejussi.shopply.R
 import com.bejussi.shopply.databinding.FragmentItemListBinding
-import com.bejussi.shopply.domain.model.Category
 import com.bejussi.shopply.domain.model.Item
 import com.bejussi.shopply.presentation.adapter.item.ItemActionListener
 import com.bejussi.shopply.presentation.adapter.item.ItemListAdapter
-import com.bejussi.shopply.presentation.dialog.add_item_dialig.AddItemDialog
-import com.bejussi.shopply.presentation.dialog.add_item_dialig.AddItemDialogListener
 import com.bejussi.shopply.presentation.utils.SwipeToDelete
 import com.bejussi.shopply.presentation.view_model.ItemViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -63,14 +60,8 @@ class ItemListFragment : Fragment() {
         }
 
         binding.addNewItemButton.setOnClickListener {
-            AddItemDialog(requireContext(),
-                object : AddItemDialogListener {
-                    override fun addItem(item: Item) {
-                        viewModel.insertItem(item)
-                    }
-
-                }, args.categoryName
-            ).show()
+            val action = ItemListFragmentDirections.actionItemListFragmentToAddNewItemSheet(args.categoryName)
+            findNavController().navigate(action)
         }
 
         binding.menuButton.setOnClickListener {
@@ -129,6 +120,11 @@ class ItemListFragment : Fragment() {
         }
         val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallback)
         itemTouchHelper.attachToRecyclerView(recyclerView)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 }
