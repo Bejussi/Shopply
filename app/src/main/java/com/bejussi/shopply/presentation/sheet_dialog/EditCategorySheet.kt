@@ -1,23 +1,27 @@
 package com.bejussi.shopply.presentation.sheet_dialog
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.bejussi.shopply.R
-import com.bejussi.shopply.databinding.FragmentAddNewListSheetBinding
+import com.bejussi.shopply.databinding.FragmentEditCategorySheetBinding
 import com.bejussi.shopply.domain.model.Category
 import com.bejussi.shopply.presentation.view_model.CategoryViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AddNewListSheet : BottomSheetDialogFragment() {
+class EditCategorySheet : BottomSheetDialogFragment() {
 
-    private var _binding: FragmentAddNewListSheetBinding? = null
+    private var _binding: FragmentEditCategorySheetBinding? = null
     private val binding get() = _binding!!
+
+    val args: EditCategorySheetArgs by navArgs()
 
     private val viewModel: CategoryViewModel by viewModels()
 
@@ -25,22 +29,25 @@ class AddNewListSheet : BottomSheetDialogFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentAddNewListSheetBinding.inflate(inflater, container, false)
+        _binding = FragmentEditCategorySheetBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.addButton.setOnClickListener {
+        binding.nameEditText.setText(args.category.name)
+        binding.emojiEditText.setText(args.category.emoji)
+
+        binding.editButton.setOnClickListener {
             val nameCategory = binding.nameEditText.text.toString()
             val emojiCategory = binding.emojiEditText.text.toString()
 
-            if (nameCategory.isEmpty() || emojiCategory.isEmpty()) {
+            if (nameCategory.isEmpty()||emojiCategory.isEmpty()) {
                 showErrorToast()
             } else {
                 val category = createCategory(nameCategory, emojiCategory)
-                addCategory(category)
+                updateCategory(category)
             }
         }
     }
@@ -52,8 +59,8 @@ class AddNewListSheet : BottomSheetDialogFragment() {
         )
     }
 
-    private fun addCategory(category: Category) {
-        viewModel.insertCategory(category)
+    private fun updateCategory(category: Category) {
+        viewModel.editCategory(category)
         dismiss()
     }
 

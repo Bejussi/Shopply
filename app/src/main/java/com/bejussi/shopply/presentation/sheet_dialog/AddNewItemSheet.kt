@@ -67,4 +67,8 @@ class AddNewItemSheet() : BottomSheetDialogFragment() {
         Toast.makeText(context, R.string.dialog_toast, Toast.LENGTH_SHORT).show()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }

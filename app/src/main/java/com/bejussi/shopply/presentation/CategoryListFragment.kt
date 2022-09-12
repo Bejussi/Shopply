@@ -14,8 +14,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bejussi.shopply.databinding.FragmentCategoryListBinding
 import com.bejussi.shopply.domain.model.Category
 import com.bejussi.shopply.presentation.adapter.category.CategoryListAdapter
-import com.bejussi.shopply.presentation.dialog.edit_category_dialog.EditCategoryDialog
-import com.bejussi.shopply.presentation.dialog.edit_category_dialog.EditCategoryDialogListener
 import com.bejussi.shopply.presentation.adapter.category.CategoryActionListener
 import com.bejussi.shopply.presentation.view_model.CategoryViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -109,12 +107,8 @@ class CategoryListFragment : Fragment() {
             }
 
             override fun onCategoryEdit(category: Category) {
-                EditCategoryDialog(requireContext(),
-                    object : EditCategoryDialogListener {
-                        override fun editCategory(category: Category) {
-                            viewModel.editCategory(category)
-                        }
-                    }, category).show()
+               val action = CategoryListFragmentDirections.actionCategoryListFragmentToEditCategorySheet(category)
+                findNavController().navigate(action)
             }
 
             override fun onShowCategoryProductsList(categoryName: String) {

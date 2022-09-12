@@ -76,5 +76,8 @@
         <action
             android:id="@+id/action_editCategorySheet_to_categoryListFragment"
             app:destination="@id/categoryListFragment" />
+        <argument
+            android:name="category"
+            app:argType="com.bejussi.shopply.domain.model.Category" />
     </dialog>
 </navigation>
