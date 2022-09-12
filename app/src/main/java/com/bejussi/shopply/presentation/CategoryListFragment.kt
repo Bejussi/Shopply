@@ -10,13 +10,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bejussi.shopply.databinding.FragmentCategoryListBinding
 import com.bejussi.shopply.domain.model.Category
 import com.bejussi.shopply.presentation.adapter.category.CategoryListAdapter
-import com.bejussi.shopply.presentation.dialog.add_category_dialog.AddCategoryDialog
-import com.bejussi.shopply.presentation.dialog.add_category_dialog.AddCategoryDialogListener
-import com.bejussi.shopply.presentation.dialog.edit_category_dialog.EditCategoryDialog
-import com.bejussi.shopply.presentation.dialog.edit_category_dialog.EditCategoryDialogListener
 import com.bejussi.shopply.presentation.adapter.category.CategoryActionListener
 import com.bejussi.shopply.presentation.view_model.CategoryViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -56,12 +53,8 @@ class CategoryListFragment : Fragment() {
         }
 
         binding.addNewListButton.setOnClickListener {
-            AddCategoryDialog(requireContext(),
-            object : AddCategoryDialogListener {
-                override fun addCategory(category: Category) {
-                    viewModel.insertCategory(category)
-                }
-            }).show()
+            val action = CategoryListFragmentDirections.actionCategoryListFragmentToAddNewListSheet()
+            findNavController().navigate(action)
         }
 
         binding.searchEditText.addTextChangedListener(object : TextWatcher {
@@ -84,6 +77,17 @@ class CategoryListFragment : Fragment() {
             }
 
         })
+
+        binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                if (dy > 0 && binding.addNewListButton.visibility == View.VISIBLE) {
+                    binding.addNewListButton.visibility = View.INVISIBLE
+                } else if (dy < 0 && binding.addNewListButton.visibility != View.VISIBLE) {
+                    binding.addNewListButton.visibility = View.VISIBLE
+                }
+            }
+        })
     }
 
     private fun searchCategory(query: String) {
@@ -103,12 +107,8 @@ class CategoryListFragment : Fragment() {
             }
 
             override fun onCategoryEdit(category: Category) {
-                EditCategoryDialog(requireContext(),
-                object : EditCategoryDialogListener {
-                    override fun editCategory(category: Category) {
-                        viewModel.editCategory(category)
-                    }
-                }, category).show()
+               val action = CategoryListFragmentDirections.actionCategoryListFragmentToEditCategorySheet(category)
+                findNavController().navigate(action)
             }
 
             override fun onShowCategoryProductsList(categoryName: String) {
@@ -121,4 +121,8 @@ class CategoryListFragment : Fragment() {
         binding.recyclerView.adapter = adapter
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }
