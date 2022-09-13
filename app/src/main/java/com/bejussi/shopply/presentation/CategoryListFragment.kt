@@ -9,13 +9,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bejussi.shopply.databinding.FragmentCategoryListBinding
 import com.bejussi.shopply.domain.model.Category
+import com.bejussi.shopply.domain.model.Item
 import com.bejussi.shopply.presentation.adapter.category.CategoryListAdapter
 import com.bejussi.shopply.presentation.adapter.category.CategoryActionListener
+import com.bejussi.shopply.presentation.utils.SwipeToDelete
 import com.bejussi.shopply.presentation.view_model.CategoryViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -117,8 +121,32 @@ class CategoryListFragment : Fragment() {
             }
 
         })
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
+
+        swipeToDelete(binding.recyclerView)
+    }
+
+    private fun swipeToDelete(recyclerView: RecyclerView) {
+        val swipeToDeleteCallback = object : SwipeToDelete() {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val itemDelete = adapter.currentList[viewHolder.adapterPosition]
+                viewModel.deleteCategory(itemDelete)
+                restoreDeletedData(viewHolder.itemView, itemDelete)
+            }
+        }
+        val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallback)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
+    }
+
+    private fun restoreDeletedData(view: View, deletedItem: Category) {
+        val snackBar = Snackbar.make(
+            view, "Deleted '${deletedItem.name}'",
+            Snackbar.LENGTH_LONG
+        )
+        snackBar.setAction("Undo") {
+            viewModel.insertCategory(deletedItem)
+        }
+        snackBar.show()
     }
 
     override fun onDestroy() {

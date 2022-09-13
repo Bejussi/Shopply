@@ -19,6 +19,7 @@ import com.bejussi.shopply.presentation.adapter.item.ItemActionListener
 import com.bejussi.shopply.presentation.adapter.item.ItemListAdapter
 import com.bejussi.shopply.presentation.utils.SwipeToDelete
 import com.bejussi.shopply.presentation.view_model.ItemViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -105,7 +106,6 @@ class ItemListFragment : Fragment() {
             }
 
         })
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
 
         swipeToDelete(binding.recyclerView)
@@ -116,10 +116,22 @@ class ItemListFragment : Fragment() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val itemDelete = adapter.currentList[viewHolder.adapterPosition]
                 viewModel.deleteItem(itemDelete)
+                restoreDeletedData(viewHolder.itemView, itemDelete)
             }
         }
         val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallback)
         itemTouchHelper.attachToRecyclerView(recyclerView)
+    }
+
+    private fun restoreDeletedData(view: View, deletedItem: Item) {
+        val snackBar = Snackbar.make(
+            view, "Deleted '${deletedItem.name}'",
+            Snackbar.LENGTH_LONG
+        )
+        snackBar.setAction("Undo") {
+            viewModel.insertItem(deletedItem)
+        }
+        snackBar.show()
     }
 
     override fun onDestroy() {
