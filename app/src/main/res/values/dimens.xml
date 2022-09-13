@@ -77,4 +77,8 @@
     <!-- Settings item-->
     <dimen name="margin_settings_items">24dp</dimen>
 
+    <!-- Empty image-->
+    <dimen name="margin_empty_image_top">164dp</dimen>
+    <dimen name="size_empty_image">100dp</dimen>
+
 </resources>

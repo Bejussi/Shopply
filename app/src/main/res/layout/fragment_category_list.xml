@@ -79,8 +79,30 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:listitem="@layout/item_category"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <ImageView
+        android:id="@+id/empty_list_image"
+        android:layout_width="@dimen/size_empty_image"
+        android:layout_height="@dimen/size_empty_image"
+        android:src="@drawable/ic_empty"
+        android:visibility="invisible"
+        android:layout_marginTop="@dimen/margin_empty_image_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_edit_text" />
+
+    <TextView
+        android:id="@+id/empty_list_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/ItemTitleText"
+        android:text="No items yet"
+        android:visibility="invisible"
+        android:layout_marginTop="@dimen/margin_min"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/empty_list_image" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/add_new_list_button"
