@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface ItemDao {
 
-    @Query("SELECT* FROM item WHERE category = :categoryName")
+    @Query("SELECT* FROM item WHERE category = :categoryName ORDER BY bought")
     fun getItemsList(categoryName: String): Flow<List<Item>>
 
     @Query("SELECT* FROM item WHERE id = :id")
