@@ -50,7 +50,12 @@ class ItemListFragment : Fragment() {
         viewModel.allItems.observe(this.viewLifecycleOwner) { items ->
             items.let {
                 adapter.submitList(it)
+                viewModel.checkIfDatabaseEmpty(items)
             }
+        }
+
+        viewModel.emptyDatabase.observe(this.viewLifecycleOwner) {
+            showEmptyDatabaseViews(it)
         }
 
         setupRecyclerView()
@@ -109,6 +114,16 @@ class ItemListFragment : Fragment() {
         binding.recyclerView.adapter = adapter
 
         swipeToDelete(binding.recyclerView)
+    }
+
+    private fun showEmptyDatabaseViews(emptyDatabase: Boolean) {
+        if (emptyDatabase) {
+            binding.emptyListImage.visibility = View.VISIBLE
+            binding.emptyListText.visibility = View.VISIBLE
+        } else {
+            binding.emptyListImage.visibility = View.INVISIBLE
+            binding.emptyListText.visibility = View.INVISIBLE
+        }
     }
 
     private fun swipeToDelete(recyclerView: RecyclerView) {

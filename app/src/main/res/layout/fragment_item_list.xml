@@ -46,8 +46,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/category_name_text"
-        tools:listitem="@layout/item_items_category" />
+        app:layout_constraintTop_toBottomOf="@+id/category_name_text" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/add_new_item_button"
@@ -63,5 +62,30 @@
         app:iconGravity="textStart"
         style="@style/ButtonText"
         android:text="@string/add_new_item"/>
+
+    <ImageView
+        android:id="@+id/empty_list_image"
+        android:layout_width="@dimen/size_empty_image"
+        android:layout_height="@dimen/size_empty_image"
+        android:src="@drawable/ic_empty"
+        android:visibility="invisible"
+        android:layout_marginTop="@dimen/margin_empty_image_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/category_name_text" />
+
+    <TextView
+        android:id="@+id/empty_list_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/ItemTitleText"
+        android:text="No items yet"
+        android:visibility="invisible"
+        android:layout_marginTop="@dimen/margin_min"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/empty_list_image" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

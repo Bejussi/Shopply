@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bejussi.shopply.R
 import com.bejussi.shopply.databinding.FragmentCategoryListBinding
 import com.bejussi.shopply.domain.model.Category
 import com.bejussi.shopply.domain.model.Item
@@ -36,46 +37,53 @@ class CategoryListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-       _binding = FragmentCategoryListBinding.inflate(inflater, container, false)
+        _binding = FragmentCategoryListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.categoryList.observe(this.viewLifecycleOwner) {
-            items -> items.let {
+        viewModel.categoryList.observe(this.viewLifecycleOwner) { items ->
+            items.let {
+                viewModel.checkIfDatabaseEmpty(items)
                 adapter.submitList(it)
             }
+        }
+
+        viewModel.emptyDatabase.observe(this.viewLifecycleOwner) {
+            showEmptyDatabaseViews(it)
         }
 
         setupRecyclerView()
 
         binding.menuButton.setOnClickListener {
-            val action = CategoryListFragmentDirections.actionCategoryListFragmentToSettingsFragment()
+            val action =
+                CategoryListFragmentDirections.actionCategoryListFragmentToSettingsFragment()
             findNavController().navigate(action)
         }
 
         binding.addNewListButton.setOnClickListener {
-            val action = CategoryListFragmentDirections.actionCategoryListFragmentToAddNewListSheet()
+            val action =
+                CategoryListFragmentDirections.actionCategoryListFragmentToAddNewListSheet()
             findNavController().navigate(action)
         }
 
         binding.searchEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(query: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                if(query != null) {
+                if (query != null) {
                     searchCategory(query.toString())
                 }
             }
 
             override fun onTextChanged(query: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                if(query != null) {
+                if (query != null) {
                     searchCategory(query.toString())
                 }
             }
 
             override fun afterTextChanged(query: Editable?) {
-                if(query != null) {
+                if (query != null) {
                     searchCategory(query.toString())
                 }
             }
@@ -92,6 +100,16 @@ class CategoryListFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun showEmptyDatabaseViews(emptyDatabase: Boolean) {
+        if (emptyDatabase) {
+            binding.emptyListImage.visibility = View.VISIBLE
+            binding.emptyListText.visibility = View.VISIBLE
+        } else {
+            binding.emptyListImage.visibility = View.INVISIBLE
+            binding.emptyListText.visibility = View.INVISIBLE
+        }
     }
 
     private fun searchCategory(query: String) {
@@ -111,12 +129,18 @@ class CategoryListFragment : Fragment() {
             }
 
             override fun onCategoryEdit(category: Category) {
-               val action = CategoryListFragmentDirections.actionCategoryListFragmentToEditCategorySheet(category)
+                val action =
+                    CategoryListFragmentDirections.actionCategoryListFragmentToEditCategorySheet(
+                        category
+                    )
                 findNavController().navigate(action)
             }
 
             override fun onShowCategoryProductsList(categoryName: String) {
-                val action = CategoryListFragmentDirections.actionCategoryListFragmentToItemListFragment(categoryName)
+                val action =
+                    CategoryListFragmentDirections.actionCategoryListFragmentToItemListFragment(
+                        categoryName
+                    )
                 findNavController().navigate(action)
             }
 
