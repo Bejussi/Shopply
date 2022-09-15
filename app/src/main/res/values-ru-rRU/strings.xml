@@ -6,7 +6,6 @@
     <string name="hello">Привет</string>
     <string name="title_notification">Привет 👋 Это Shopply</string>
     <string name="message_notification">Пойдем сегодня за покупками? 👀</string>
-    <string name="emoji">👋</string>
     <string name="what">Что мы покупаем сегодня?</string>
     <string name="search">Поиск списка</string>
     <string name="my_lists">Мои списки</string>
@@ -26,15 +25,18 @@
     <string name="settings">Настройки</string>
     <string name="general">Общие</string>
     <string name="language">Язык</string>
-    <string name="english">Английский</string>
+    <string name="language_code">en</string>
     <string name="notification">Уведомления</string>
     <string name="dark_mode">Темный режим</string>
     <string name="about">О нас</string>
     <string name="privacy_policy">Политика конфиденциальности</string>
     <string name="help">Помощь</string>
-    <string-array name="language">
-        <item>English</item>
-        <item>Ukrainian</item>
-        <item>Russian</item>
-    </string-array>
+    <string name="empty_main_text">Давайте спланируем ваши покупки!</string>
+    <string name="click_button_below">Нажмите кнопку ниже, чтобы начать</string>
+    <string name="empty_main_item_text">Что вам нужно купить?</string>
+    <string name="eng">en</string>
+    <string name="uk">uk</string>
+    <string name="ru">ru</string>
+    <string name="deleted_item">Удалено: %1$s</string>
+    <string name="undo">Отменить</string>
 </resources>

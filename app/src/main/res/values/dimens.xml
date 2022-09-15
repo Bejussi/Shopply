@@ -12,6 +12,8 @@
     <dimen name="margin_min">16dp</dimen>
     <dimen name="margin_recycler">20dp</dimen>
     <dimen name="margin_text">4dp</dimen>
+    <dimen name="margin_between_edit_text">12dp</dimen>
+    <dimen name="margin_top">28dp</dimen>
 
     <!-- Text sizes -->
     <dimen name="max_text">28sp</dimen>
@@ -22,8 +24,8 @@
     <dimen name="my_list_text">18sp</dimen>
 
     <!-- Button -->
-    <dimen name="button_height">60dp</dimen>
-    <dimen name="button_radius">16dp</dimen>
+    <dimen name="button_height">48dp</dimen>
+    <dimen name="button_radius">10dp</dimen>
 
     <!-- Item -->
     <dimen name="item_padding">16dp</dimen>
@@ -31,24 +33,19 @@
     <dimen name="item_text_margin">8dp</dimen>
 
     <!-- Search -->
-    <dimen name="search_margin_top">20dp</dimen>
+    <dimen name="search_margin_top">24dp</dimen>
     <dimen name="search_text">14sp</dimen>
     <dimen name="search_height">48dp</dimen>
-    <dimen name="search_radius">16dp</dimen>
+    <dimen name="search_radius">10dp</dimen>
     <dimen name="search_text_margin">8dp</dimen>
     <dimen name="search_padding_left_right">16dp</dimen>
     <dimen name="search_padding_top_bottom">8dp</dimen>
-
-    <!-- Emoji -->
-    <dimen name="emoji_width">24dp</dimen>
-    <dimen name="emoji_height">24dp</dimen>
-    <dimen name="emoji_margin_left">4dp</dimen>
 
     <!-- Item -->
     <dimen name="item_border">2dp</dimen>
     <dimen name="item_margin_left_right">20dp</dimen>
     <dimen name="item_margin_top_bottom">16dp</dimen>
-    <dimen name="item_height">73dp</dimen>
+    <dimen name="item_height">56dp</dimen>
 
     <!-- Item items -->
     <dimen name="item_items_border">2dp</dimen>
@@ -57,12 +54,10 @@
     <dimen name="item_items_height">56dp</dimen>
     <dimen name="count_text">12dp</dimen>
 
-    <!-- Dialog -->
-    <dimen name="margin_between_edit_text">12dp</dimen>
-    <dimen name="dialog_edit_text_height">48dp</dimen>
-    <dimen name="dialog_edit_text_width">48dp</dimen>
-    <dimen name="dialog_width">292dp</dimen>
-    <dimen name="dialog_height">237dp</dimen>
+    <!-- Sheet -->
+    <dimen name="margin_edit_text">24dp</dimen>
+    <dimen name="edit_text_height">48dp</dimen>
+    <dimen name="edit_text_margin_top">24dp</dimen>
 
     <!-- Dialog Button-->
     <dimen name="dialog_button_height">48dp</dimen>
@@ -80,5 +75,11 @@
     <!-- Empty image-->
     <dimen name="margin_empty_image_top">164dp</dimen>
     <dimen name="size_empty_image">100dp</dimen>
+
+    <!-- Elevation-->
+    <dimen name="elevation">4dp</dimen>
+
+    <!-- Dash -->
+    <dimen name="dashWidth">10dp</dimen>
 
 </resources>

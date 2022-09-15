@@ -1,7 +1,6 @@
 package com.bejussi.shopply.presentation.sheet_dialog
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,25 +36,22 @@ class EditCategorySheet : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.nameEditText.setText(args.category.name)
-        binding.emojiEditText.setText(args.category.emoji)
 
         binding.editButton.setOnClickListener {
             val nameCategory = binding.nameEditText.text.toString()
-            val emojiCategory = binding.emojiEditText.text.toString()
 
-            if (nameCategory.isEmpty()||emojiCategory.isEmpty()) {
+            if (nameCategory.isEmpty()) {
                 showErrorToast()
             } else {
-                val category = createCategory(nameCategory, emojiCategory)
+                val category = createCategory(nameCategory)
                 updateCategory(category)
             }
         }
     }
 
-    private fun createCategory(nameCategory: String, emojiCategory: String): Category {
+    private fun createCategory(nameCategory: String): Category {
         return Category(
-            name = nameCategory,
-            emoji = emojiCategory
+            name = nameCategory
         )
     }
 

@@ -9,6 +9,5 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Category(
     @PrimaryKey(autoGenerate = false)
-    val name: String,
-    val emoji: String
+    val name: String
 ): Parcelable

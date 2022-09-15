@@ -1,5 +1,6 @@
 package com.bejussi.shopply.presentation.adapter.category
 
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,8 +23,6 @@ class CategoryListAdapter(
         fun bind(category: Category) {
             binding.apply {
                 categoryNameText.text = category.name
-                categoryEmojiImage.text = category.emoji
-                countItemsText.text = "12 items"
             }
         }
     }
@@ -42,7 +41,6 @@ class CategoryListAdapter(
         val currentCategory = getItem(position)
         with(holder.binding) {
             categoryNameText.text = currentCategory.name
-            categoryEmojiImage.text = currentCategory.emoji
             menuButton.setOnClickListener {
                 popupMenu(it, currentCategory)
             }
@@ -72,6 +70,7 @@ class CategoryListAdapter(
             }
         }
         popupMenu.setForceShowIcon(true)
+        popupMenu.setGravity(Gravity.END);
         popupMenu.show()
     }
 

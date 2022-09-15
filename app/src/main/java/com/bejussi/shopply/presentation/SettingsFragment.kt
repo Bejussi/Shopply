@@ -1,11 +1,12 @@
 package com.bejussi.shopply.presentation
 
 import android.os.Bundle
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
+import androidx.appcompat.widget.PopupMenu
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -38,16 +39,10 @@ class SettingsFragment : Fragment() {
 
         observeData()
 
-        binding.languageChoice.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val selectedLanguage = adapterView?.getItemAtPosition(position).toString()
-                lifecycleScope.launch {
-                    settingsDataStore.updateLanguage(selectedLanguage)
-                }
-            }
-
-            override fun onNothingSelected(p0: AdapterView<*>?) { }
+        binding.languageChoice.setOnClickListener {
+            popupMenu(it)
         }
+
 
         binding.themeChoice.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
@@ -88,7 +83,7 @@ class SettingsFragment : Fragment() {
         settingsDataStore.language.asLiveData().observe(viewLifecycleOwner) { language ->
             language.let {
                 binding.languageChoice.apply {
-                    setSelection(resources.getStringArray(R.array.language).indexOf(language));
+                    text = language
                 }
 
             }
@@ -99,6 +94,36 @@ class SettingsFragment : Fragment() {
             }
 
         }
+    }
+
+    private fun popupMenu(view: View) {
+        val popupMenu = PopupMenu(view.context, view)
+        popupMenu.inflate(R.menu.item_language)
+        popupMenu.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.eng_language -> {
+                    lifecycleScope.launch {
+                        settingsDataStore.updateLanguage(it.toString())
+                    }
+                    true
+                }
+                R.id.uk_language -> {
+                    lifecycleScope.launch {
+                        settingsDataStore.updateLanguage(it.toString())
+                    }
+                    true
+                }
+                R.id.ru_language -> {
+                    lifecycleScope.launch {
+                        settingsDataStore.updateLanguage(it.toString())
+                    }
+                    true
+                }
+                else -> false
+            }
+        }
+        popupMenu.setGravity(Gravity.END)
+        popupMenu.show()
     }
 
     override fun onDestroy() {

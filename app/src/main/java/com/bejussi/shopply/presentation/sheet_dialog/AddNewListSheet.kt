@@ -34,21 +34,19 @@ class AddNewListSheet : BottomSheetDialogFragment() {
 
         binding.addButton.setOnClickListener {
             val nameCategory = binding.nameEditText.text.toString()
-            val emojiCategory = binding.emojiEditText.text.toString()
 
-            if (nameCategory.isEmpty() || emojiCategory.isEmpty()) {
+            if (nameCategory.isEmpty()) {
                 showErrorToast()
             } else {
-                val category = createCategory(nameCategory, emojiCategory)
+                val category = createCategory(nameCategory)
                 addCategory(category)
             }
         }
     }
 
-    private fun createCategory(nameCategory: String, emojiCategory: String): Category {
+    private fun createCategory(nameCategory: String): Category {
         return Category(
-            name = nameCategory,
-            emoji = emojiCategory
+            name = nameCategory
         )
     }
 

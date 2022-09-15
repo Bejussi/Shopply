@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="blue">#056CF2</color>
-    <color name="light_gray">#F5F6FA</color>
-    <color name="dark_gray">#A5AFBB</color>
-    <color name="black">#212531</color>
+    <color name="light_gray">#F2F2F2</color>
+    <color name="dark_gray">#A3AEC2</color>
+    <color name="black">#1F2440</color>
     <color name="white">#FFFEFE</color>
-    <color name="icon_tint">#FFFEFE</color>
+    <color name="icon_tint">#A3AEC2</color>
 </resources>

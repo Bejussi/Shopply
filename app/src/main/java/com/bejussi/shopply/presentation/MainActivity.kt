@@ -1,8 +1,9 @@
 package com.bejussi.shopply.presentation
 
 import android.app.Activity
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Context
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.asLiveData
 import androidx.navigation.NavController
@@ -22,7 +23,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private lateinit var settingsDataStore: SettingsDataStore
 
-    private lateinit var locale: Locale
+    private var locale: Locale? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +45,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
         settingsDataStore.language.asLiveData().observe(this) { language ->
             language.let {
-                getLanguageCode(language)
+                setLocal(this, language)
             }
 
         }
@@ -59,15 +60,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
-    }
-
-    private fun getLanguageCode(language: String?) {
-        val array = resources.getStringArray(R.array.language)
-        when(language) {
-            array[0] -> setLocal(this, "en")
-            array[1] -> setLocal(this, "uk")
-            array[2] -> setLocal(this, "ru")
-        }
     }
 
     private fun setLocal(activity: Activity, language: String) {

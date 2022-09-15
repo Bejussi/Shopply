@@ -17,7 +17,7 @@
         android:background="@drawable/custom_check_box"
         android:button="@null"
         android:minHeight="0dp"
-        android:checked="true"
+        android:checked="false"
         android:layout_marginLeft="@dimen/item_items_margin_left_right"
         android:layout_marginTop="@dimen/item_items_checkbox_margin_top_bottom"
         android:layout_marginBottom="@dimen/item_items_checkbox_margin_top_bottom"
@@ -28,13 +28,16 @@
     <TextView
         android:id="@+id/item_name_text"
         style="@style/ItemTitleText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_min"
-        android:layout_marginTop="@dimen/item_margin_top_bottom"
+        android:layout_marginRight="@dimen/margin_min"
+        android:lines="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/minus_button"
         app:layout_constraintStart_toEndOf="@+id/checkBox"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Bread"/>
+        tools:text="Bread" />
 
     <ImageButton
         android:id="@+id/plus_button"
@@ -42,6 +45,7 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_pluse_circle"
+        android:padding="1dp"
         android:layout_marginEnd="@dimen/item_items_margin_left_right"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,6 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_minus_circle"
+        android:padding="1dp"
         android:layout_marginRight="@dimen/margin_min"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/count_text"
