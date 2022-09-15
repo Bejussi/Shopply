@@ -5,9 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.SettingsFragment"
-    android:paddingLeft="24dp"
-    android:paddingRight="24dp"
-    android:paddingTop="20dp">
+    android:background="@color/white">
 
     <ImageButton
         android:id="@+id/back_button"
@@ -15,6 +13,9 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_back"
+        android:padding="1dp"
+        android:layout_marginLeft="@dimen/left_right_padding"
+        android:layout_marginTop="@dimen/margin_top"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,6 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/settings"
+        android:layout_marginTop="@dimen/margin_top"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,6 +37,7 @@
         android:layout_height="wrap_content"
         android:text="@string/general"
         android:layout_marginTop="@dimen/margin_max"
+        android:layout_marginLeft="@dimen/left_right_padding"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/back_button" />
 
@@ -43,6 +46,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_mid"
+        android:layout_marginLeft="@dimen/left_right_padding"
+        android:layout_marginRight="@dimen/left_right_padding"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/general_text">
@@ -62,15 +67,14 @@
             android:layout_toEndOf="@+id/icon_language"
             android:text="@string/language" />
 
-        <Spinner
+        <TextView
             android:id="@+id/language_choice"
             style="@style/ItemTitleLanguageText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:entries="@array/language"
-            android:text="@string/english" />
+            android:text="@string/language_code" />
 
     </RelativeLayout>
 
@@ -79,6 +83,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_settings_items"
+        android:layout_marginLeft="@dimen/left_right_padding"
+        android:layout_marginRight="@dimen/left_right_padding"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/language_item">
@@ -118,6 +124,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="@dimen/left_right_padding"
+        android:layout_marginRight="@dimen/left_right_padding"
         android:layout_marginTop="@dimen/margin_settings_items"
         app:layout_constraintTop_toBottomOf="@+id/notification_item">
 
@@ -156,6 +164,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/about"
+        android:layout_marginLeft="@dimen/left_right_padding"
         android:layout_marginTop="@dimen/margin_max"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/theme_item" />
@@ -164,6 +173,8 @@
         android:id="@+id/privacy_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/left_right_padding"
+        android:layout_marginRight="@dimen/left_right_padding"
         android:layout_marginTop="@dimen/margin_settings_items"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -192,6 +203,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_settings_items"
+        android:layout_marginLeft="@dimen/left_right_padding"
+        android:layout_marginRight="@dimen/left_right_padding"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/privacy_item">

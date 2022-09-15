@@ -2,7 +2,6 @@ package com.bejussi.shopply.presentation.view_model
 
 import androidx.lifecycle.*
 import com.bejussi.shopply.domain.model.Category
-import com.bejussi.shopply.domain.model.Item
 import com.bejussi.shopply.domain.use_case.CategoryUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -11,9 +10,10 @@ import javax.inject.Inject
 @HiltViewModel
 class CategoryViewModel @Inject constructor(
     private val categoryUseCases: CategoryUseCases
-): ViewModel() {
+) : ViewModel() {
 
-    val categoryList: LiveData<List<Category>> = categoryUseCases.getCategoryListUseCase().asLiveData()
+    val categoryList: LiveData<List<Category>> =
+        categoryUseCases.getCategoryListUseCase().asLiveData()
 
     val emptyDatabase: MutableLiveData<Boolean> = MutableLiveData(true)
 

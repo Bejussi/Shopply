@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.Shopply.Dark" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryVariant">@color/white</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -10,10 +10,14 @@
         <item name="colorSecondaryVariant">@color/dark_gray</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
         <item name="android:windowLightStatusBar">false</item>
         <!-- Customize your theme here. -->
+        <item name="android:navigationBarColor">@color/white</item>
         <item name="background">@color/white</item>
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+        <item name="textAppearanceLargePopupMenu">@style/TextAppearance.App.Subtitle1</item>
+        <item name="textAppearanceSmallPopupMenu">@style/TextAppearance.App.Subtitle1</item>
+        <item name="popupMenuBackground">@drawable/custom_popup_background</item>
     </style>
 </resources>

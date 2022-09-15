@@ -9,7 +9,7 @@ class CategoryRepositoryImpl(
     private val categoryDao: CategoryDao
 ): CategoryRepository {
 
-    override suspend fun getCategory(categoryName: String): Flow<Category> {
+    override fun getCategory(categoryName: String): Flow<Category> {
         return categoryDao.getCategory(categoryName)
     }
 

@@ -1,6 +1,5 @@
 package com.bejussi.shopply.data.data_source
 
-import android.icu.text.StringSearch
 import androidx.room.*
 import com.bejussi.shopply.domain.model.Category
 import kotlinx.coroutines.flow.Flow

@@ -31,7 +31,9 @@ object AppModule {
             app,
             ShoppingListDatabase::class.java,
             ShoppingListDatabase.DATABASE_NAME
-        ).build()
+        )
+            .fallbackToDestructiveMigration()
+            .build()
     }
 
     @Provides

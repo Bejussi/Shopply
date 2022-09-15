@@ -1,6 +1,7 @@
 package com.bejussi.shopply.presentation
 
 import android.os.Bundle
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +11,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bejussi.shopply.R
 import com.bejussi.shopply.databinding.FragmentItemListBinding
@@ -66,7 +66,8 @@ class ItemListFragment : Fragment() {
         }
 
         binding.addNewItemButton.setOnClickListener {
-            val action = ItemListFragmentDirections.actionItemListFragmentToAddNewItemSheet(args.categoryName)
+            val action =
+                ItemListFragmentDirections.actionItemListFragmentToAddNewItemSheet(args.categoryName)
             findNavController().navigate(action)
         }
 
@@ -100,6 +101,7 @@ class ItemListFragment : Fragment() {
             }
         }
         popupMenu.setForceShowIcon(true)
+        popupMenu.setGravity(Gravity.END);
         popupMenu.show()
     }
 
@@ -118,10 +120,10 @@ class ItemListFragment : Fragment() {
 
     private fun showEmptyDatabaseViews(emptyDatabase: Boolean) {
         if (emptyDatabase) {
-            binding.emptyListImage.visibility = View.VISIBLE
+            binding.emptyListMainText.visibility = View.VISIBLE
             binding.emptyListText.visibility = View.VISIBLE
         } else {
-            binding.emptyListImage.visibility = View.INVISIBLE
+            binding.emptyListMainText.visibility = View.INVISIBLE
             binding.emptyListText.visibility = View.INVISIBLE
         }
     }
@@ -140,13 +142,19 @@ class ItemListFragment : Fragment() {
 
     private fun restoreDeletedData(view: View, deletedItem: Item) {
         val snackBar = Snackbar.make(
-            view, "Deleted '${deletedItem.name}'",
+            view, getString(R.string.deleted_item,deletedItem.name),
             Snackbar.LENGTH_LONG
         )
-        snackBar.setAction("Undo") {
-            viewModel.insertItem(deletedItem)
+        snackBar.apply {
+            setAction(getString(R.string.undo)) {
+                viewModel.insertItem(deletedItem)
+            }
+            setBackgroundTint(resources.getColor(R.color.black))
+            setTextColor(resources.getColor(R.color.white))
+            setActionTextColor(resources.getColor(R.color.white))
+            show()
         }
-        snackBar.show()
+
     }
 
     override fun onDestroy() {

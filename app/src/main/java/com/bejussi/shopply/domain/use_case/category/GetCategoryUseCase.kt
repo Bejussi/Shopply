@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 class GetCategoryUseCase(private val categoryRepository: CategoryRepository) {
 
-    suspend operator fun invoke(categoryName: String): Flow<Category> {
+    operator fun invoke(categoryName: String): Flow<Category> {
         return categoryRepository.getCategory(categoryName)
     }
 }

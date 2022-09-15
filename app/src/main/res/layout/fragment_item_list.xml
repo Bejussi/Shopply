@@ -4,10 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.ItemListFragment"
-    android:paddingLeft="24dp"
-    android:paddingRight="24dp"
-    android:paddingTop="20dp">
+    android:background="@color/white"
+    tools:context=".presentation.ItemListFragment" >
 
     <ImageButton
         android:id="@+id/back_button"
@@ -15,15 +13,23 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_back"
+        android:padding="1dp"
+        android:layout_marginTop="@dimen/margin_top"
+        android:layout_marginLeft="@dimen/left_right_padding"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/category_name_text"
         style="@style/WhatText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/left_right_padding"
+        android:lines="1"
+        android:layout_marginRight="@dimen/left_right_padding"
         android:text="Grocery"
+        android:layout_marginTop="@dimen/margin_top"
         app:layout_constraintEnd_toStartOf="@+id/menu_button"
         app:layout_constraintStart_toEndOf="@+id/back_button"
         app:layout_constraintTop_toTopOf="parent" />
@@ -34,6 +40,9 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_menu_item"
+        android:padding="1dp"
+        android:layout_marginRight="@dimen/left_right_padding"
+        android:layout_marginTop="@dimen/margin_top"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,6 +52,8 @@
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/margin_max"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_marginLeft="@dimen/left_right_padding"
+        android:layout_marginRight="@dimen/left_right_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,41 +61,40 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/add_new_item_button"
+        style="@style/Button.MyTheme"
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"
-        android:background="@drawable/button"
         android:layout_marginBottom="@dimen/margin_max"
+        android:text="@string/add_new_item"
+        android:layout_marginLeft="@dimen/left_right_padding"
+        android:layout_marginRight="@dimen/left_right_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:icon="@drawable/ic_pluse"
-        app:iconTint="@color/icon_tint"
-        app:iconGravity="textStart"
-        style="@style/ButtonText"
-        android:text="@string/add_new_item"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/empty_list_image"
-        android:layout_width="@dimen/size_empty_image"
-        android:layout_height="@dimen/size_empty_image"
-        android:src="@drawable/ic_empty"
+    <TextView
+        android:id="@+id/empty_list_main_text"
+        style="@style/ItemTitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/empty_main_item_text"
         android:visibility="invisible"
-        android:layout_marginTop="@dimen/margin_empty_image_top"
+        app:layout_constraintBottom_toTopOf="@+id/add_new_item_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/category_name_text" />
 
     <TextView
         android:id="@+id/empty_list_text"
+        style="@style/EmptyText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/ItemTitleText"
-        android:text="No items yet"
+        android:layout_marginTop="@dimen/margin_between_edit_text"
+        android:text="@string/click_button_below"
         android:visibility="invisible"
-        android:layout_marginTop="@dimen/margin_min"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/empty_list_image" />
+        app:layout_constraintTop_toBottomOf="@+id/empty_list_main_text" />
 
 
 
