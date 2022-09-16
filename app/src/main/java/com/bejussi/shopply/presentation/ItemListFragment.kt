@@ -45,7 +45,7 @@ class ItemListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.categoryNameText.text = args.categoryName
+        binding.categoryNameText.text = args.category.name
 
         viewModel.allItems.observe(this.viewLifecycleOwner) { items ->
             items.let {
@@ -67,7 +67,7 @@ class ItemListFragment : Fragment() {
 
         binding.addNewItemButton.setOnClickListener {
             val action =
-                ItemListFragmentDirections.actionItemListFragmentToAddNewItemSheet(args.categoryName)
+                ItemListFragmentDirections.actionItemListFragmentToAddNewItemSheet(args.category)
             findNavController().navigate(action)
         }
 
@@ -90,11 +90,11 @@ class ItemListFragment : Fragment() {
                     true
                 }
                 R.id.delete_checked_items -> {
-                    viewModel.deleteCheckedItems(args.categoryName)
+                    viewModel.deleteCheckedItems(args.category.name)
                     true
                 }
                 R.id.clean_items_list -> {
-                    viewModel.cleanItemsList(args.categoryName)
+                    viewModel.cleanItemsList(args.category.name)
                     true
                 }
                 else -> false

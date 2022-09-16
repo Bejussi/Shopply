@@ -47,7 +47,7 @@ class CategoryListAdapter(
         }
 
         holder.itemView.setOnClickListener {
-            categoryActionListener.onShowCategoryProductsList(currentCategory.name)
+            categoryActionListener.onShowCategoryProductsList(currentCategory)
         }
 
         holder.bind(currentCategory)

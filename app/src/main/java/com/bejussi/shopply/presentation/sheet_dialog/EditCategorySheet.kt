@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.bejussi.shopply.R
 import com.bejussi.shopply.databinding.FragmentEditCategorySheetBinding
@@ -43,14 +44,15 @@ class EditCategorySheet : BottomSheetDialogFragment() {
             if (nameCategory.isEmpty()) {
                 showErrorToast()
             } else {
-                val category = createCategory(nameCategory)
+                val category = createCategory(args.category.id, nameCategory)
                 updateCategory(category)
             }
         }
     }
 
-    private fun createCategory(nameCategory: String): Category {
+    private fun createCategory(id: Int, nameCategory: String): Category {
         return Category(
+            id = id,
             name = nameCategory
         )
     }

@@ -32,8 +32,8 @@
             android:id="@+id/action_itemListFragment_to_categoryListFragment"
             app:destination="@id/categoryListFragment" />
         <argument
-            android:name="categoryName"
-            app:argType="string" />
+            android:name="category"
+            app:argType="com.bejussi.shopply.domain.model.Category" />
         <action
             android:id="@+id/action_itemListFragment_to_addNewItemSheet"
             app:destination="@id/addNewItemSheet" />
@@ -65,8 +65,8 @@
             android:id="@+id/action_addNewItemSheet_to_itemListFragment"
             app:destination="@id/itemListFragment" />
         <argument
-            android:name="categoryName"
-            app:argType="string" />
+            android:name="category"
+            app:argType="com.bejussi.shopply.domain.model.Category" />
     </dialog>
     <dialog
         android:id="@+id/editCategorySheet"

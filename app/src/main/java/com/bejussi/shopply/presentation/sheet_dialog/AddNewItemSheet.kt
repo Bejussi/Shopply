@@ -54,7 +54,8 @@ class AddNewItemSheet() : BottomSheetDialogFragment() {
             name = nameItem,
             count = countItem.toInt(),
             bought = false,
-            category = args.categoryName
+            category = args.category.name,
+            categoryId = args.category.id
         )
     }
 

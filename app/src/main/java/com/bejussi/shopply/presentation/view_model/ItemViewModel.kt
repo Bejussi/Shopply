@@ -16,10 +16,10 @@ class ItemViewModel @Inject constructor(
     private val state: SavedStateHandle
 ): ViewModel() {
 
-    val categoryName = state.get<String>(CATEGORY_STATE_KEY)!!
+    val category = state.get<Category>(CATEGORY_STATE_KEY)!!
 
-    val allItems: LiveData<List<Item>> = itemUseCases.getItemsListUseCase(categoryName).asLiveData()
-    val sortedItems: LiveData<List<Item>> = itemUseCases.sortByNameUseCase(categoryName).asLiveData()
+    val allItems: LiveData<List<Item>> = itemUseCases.getItemsListUseCase(category.name).asLiveData()
+    val sortedItems: LiveData<List<Item>> = itemUseCases.sortByNameUseCase(category.name).asLiveData()
 
     val emptyDatabase: MutableLiveData<Boolean> = MutableLiveData(true)
 
@@ -58,6 +58,6 @@ class ItemViewModel @Inject constructor(
     }
 
     companion object {
-        private const val CATEGORY_STATE_KEY = "categoryName"
+        private const val CATEGORY_STATE_KEY = "category"
     }
 }

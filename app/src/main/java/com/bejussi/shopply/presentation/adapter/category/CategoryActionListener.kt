@@ -8,5 +8,5 @@ interface CategoryActionListener {
 
     fun onCategoryEdit(category: Category)
 
-    fun onShowCategoryProductsList(categoryName: String)
+    fun onShowCategoryProductsList(category: Category)
 }
