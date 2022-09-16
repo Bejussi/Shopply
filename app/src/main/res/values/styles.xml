@@ -32,6 +32,12 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="BoughtItemTitleText" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/mid_text</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textColor">@color/dark_gray</item>
+    </style>
+
     <style name="ItemCountItemsText" parent="TextAppearance.AppCompat">
         <item name="android:textSize">@dimen/min_text</item>
         <item name="android:fontFamily">@font/roboto_regular</item>
@@ -68,6 +74,12 @@
         <item name="android:textSize">@dimen/count_text</item>
         <item name="android:fontFamily">@font/roboto_regular</item>
         <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="BoughtCountText" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/count_text</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textColor">@color/dark_gray</item>
     </style>
 
     <style name="EditText" parent="TextAppearance.AppCompat">

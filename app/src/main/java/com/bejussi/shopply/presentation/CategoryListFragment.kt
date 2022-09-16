@@ -132,10 +132,10 @@ class CategoryListFragment : Fragment() {
                 findNavController().navigate(action)
             }
 
-            override fun onShowCategoryProductsList(categoryName: String) {
+            override fun onShowCategoryProductsList(category: Category) {
                 val action =
                     CategoryListFragmentDirections.actionCategoryListFragmentToItemListFragment(
-                        categoryName
+                        category
                     )
                 findNavController().navigate(action)
             }

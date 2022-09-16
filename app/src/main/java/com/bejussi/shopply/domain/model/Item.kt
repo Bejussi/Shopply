@@ -6,8 +6,8 @@ import androidx.room.PrimaryKey
 
 @Entity(foreignKeys = [ForeignKey(
     entity = Category::class,
-    parentColumns = arrayOf("name"),
-    childColumns = arrayOf("category"),
+    parentColumns = arrayOf("id"),
+    childColumns = arrayOf("categoryId"),
     onDelete = ForeignKey.CASCADE,
     onUpdate = ForeignKey.CASCADE
 )])
@@ -17,5 +17,6 @@ data class Item(
     val name: String,
     var count: Int,
     val category: String,
+    val categoryId: Int,
     var bought: Boolean
 )

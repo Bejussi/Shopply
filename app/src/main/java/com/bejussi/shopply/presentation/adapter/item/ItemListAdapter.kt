@@ -5,63 +5,78 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bejussi.shopply.R
 import com.bejussi.shopply.databinding.ItemItemsCategoryBinding
+import com.bejussi.shopply.databinding.ItemItemsCategoryBoughtBinding
 import com.bejussi.shopply.domain.model.Category
 import com.bejussi.shopply.domain.model.Item
 
 class ItemListAdapter(
     private val itemActionListener: ItemActionListener
-): ListAdapter<Item, ItemListAdapter.ItemViewHolder>(DiffCallback) {
+) : ListAdapter<Item, RecyclerView.ViewHolder>(DiffCallback) {
 
-    class ItemViewHolder(
-        val binding: ItemItemsCategoryBinding
-    ): RecyclerView.ViewHolder(binding.root) {
-
-        fun bind(item: Item) {
-            binding.apply {
-                itemNameText.text = item.name
-                countText.text = item.count.toString()
-                checkBox.isChecked = item.bought
-            }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when (viewType) {
+            ITEM_BOUGHT -> ItemBoughtViewHolder(
+                ItemItemsCategoryBoughtBinding.inflate(
+                    LayoutInflater.from(
+                        parent.context
+                    ), parent, false
+                )
+            )
+            ITEM_DONT_BOUGHT -> ItemViewHolder(
+                ItemItemsCategoryBinding.inflate(
+                    LayoutInflater.from(
+                        parent.context
+                    ), parent, false
+                )
+            )
+            else -> throw RuntimeException("Unknow view type: $viewType")
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        return ItemViewHolder(
-           ItemItemsCategoryBinding.inflate(
-               LayoutInflater.from(
-                   parent.context
-               ), parent, false
-           )
-        )
-    }
-
-    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val currentItem = getItem(position)
 
-        with(holder.binding) {
-            itemNameText.text = currentItem.name
-            countText.text = currentItem.count.toString()
-            checkBox.isChecked = currentItem.bought
-
-            plusButton.setOnClickListener {
-                currentItem.count++
-                itemActionListener.onItemEdit(currentItem)
-            }
-
-            minusButton.setOnClickListener {
-                if (currentItem.count > 1) {
-                    currentItem.count--
-                    itemActionListener.onItemEdit(currentItem)
+        when (getItemViewType(position)) {
+            ITEM_BOUGHT -> (holder as ItemBoughtViewHolder).apply {
+                binding.apply {
+                    checkBox.setOnClickListener {
+                        currentItem.bought = checkBox.isChecked
+                        itemActionListener.onItemEdit(currentItem)
+                    }
                 }
-            }
+            }.bind(currentItem)
 
-            checkBox.setOnClickListener {
-                currentItem.bought = checkBox.isChecked
-                itemActionListener.onItemEdit(currentItem)
-            }
+            ITEM_DONT_BOUGHT -> (holder as ItemViewHolder).apply {
+                binding.apply {
+                    plusButton.setOnClickListener {
+                        currentItem.count++
+                        itemActionListener.onItemEdit(currentItem)
+                    }
+
+                    minusButton.setOnClickListener {
+                        if (currentItem.count > 1) {
+                            currentItem.count--
+                            itemActionListener.onItemEdit(currentItem)
+                        }
+                    }
+                    checkBox.setOnClickListener {
+                        currentItem.bought = checkBox.isChecked
+                        itemActionListener.onItemEdit(currentItem)
+                    }
+                }
+            }.bind(currentItem)
         }
-        holder.bind(currentItem)
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        val currentItem = getItem(position)
+        return if (currentItem.bought) {
+            ITEM_BOUGHT
+        } else {
+            ITEM_DONT_BOUGHT
+        }
     }
 
     companion object {
@@ -74,5 +89,8 @@ class ItemListAdapter(
                 return oldItem.name == newItem.name
             }
         }
+
+        const val ITEM_BOUGHT = 0
+        const val ITEM_DONT_BOUGHT = 1
     }
 }
