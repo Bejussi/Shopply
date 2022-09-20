@@ -12,10 +12,18 @@
         tools:layout="@layout/fragment_category_list" >
         <action
             android:id="@+id/action_categoryListFragment_to_itemListFragment"
-            app:destination="@id/itemListFragment" />
+            app:destination="@id/itemListFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"  />
         <action
             android:id="@+id/action_categoryListFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left"  />
         <action
             android:id="@+id/action_categoryListFragment_to_addNewListSheet"
             app:destination="@id/addNewListSheet" />
@@ -30,7 +38,9 @@
         tools:layout="@layout/fragment_item_list" >
         <action
             android:id="@+id/action_itemListFragment_to_categoryListFragment"
-            app:destination="@id/categoryListFragment" />
+            app:destination="@id/categoryListFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"   />
         <argument
             android:name="category"
             app:argType="com.bejussi.shopply.domain.model.Category" />
@@ -45,7 +55,9 @@
         tools:layout="@layout/fragment_settings" >
         <action
             android:id="@+id/action_settingsFragment_to_categoryListFragment"
-            app:destination="@id/categoryListFragment" />
+            app:destination="@id/categoryListFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left" />
     </fragment>
     <dialog
         android:id="@+id/addNewListSheet"
