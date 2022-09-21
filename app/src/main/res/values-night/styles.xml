@@ -126,4 +126,11 @@
         <item name="iconGravity">textStart</item>
     </style>
 
+    <style name="Theme.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_shopping_list</item>
+        <item name="postSplashScreenTheme">@style/Theme.Shopply.Dark</item>
+        <item name="windowSplashScreenAnimationDuration">1000</item>
+    </style>
+
 </resources>
