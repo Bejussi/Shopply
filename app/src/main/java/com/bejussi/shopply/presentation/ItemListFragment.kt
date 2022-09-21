@@ -81,8 +81,16 @@ class ItemListFragment : Fragment() {
         popupMenu.inflate(R.menu.item_list_menu)
         popupMenu.setOnMenuItemClickListener {
             when (it.itemId) {
-                R.id.sort_by_items -> {
+                R.id.sort_by_name -> {
                     viewModel.sortedItems.observe(this.viewLifecycleOwner) { items ->
+                        items.let {
+                            adapter.submitList(it)
+                        }
+                    }
+                    true
+                }
+                R.id.sort_by_bought -> {
+                    viewModel.allItems.observe(this.viewLifecycleOwner) { items ->
                         items.let {
                             adapter.submitList(it)
                         }
@@ -101,7 +109,7 @@ class ItemListFragment : Fragment() {
             }
         }
         popupMenu.setForceShowIcon(true)
-        popupMenu.setGravity(Gravity.END);
+        popupMenu.setGravity(Gravity.END)
         popupMenu.show()
     }
 
