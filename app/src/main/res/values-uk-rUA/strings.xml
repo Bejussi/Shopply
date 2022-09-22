@@ -21,7 +21,7 @@
     <string name="count">1</string>
     <string name="delete_checked">Видалити виконане</string>
     <string name="clean_list">Очистити список</string>
-    <string name="sort_by_name">Сортувати за іменем</string>
+    <string name="sort_by">Сортувати за</string>
     <string name="settings">Налаштування</string>
     <string name="general">Загальні</string>
     <string name="language">Мова</string>
@@ -39,4 +39,10 @@
     <string name="ru">ru</string>
     <string name="deleted_item">Видалено: %1$s</string>
     <string name="undo">Скасувати</string>
+    <string name="name">Назві</string>
+    <string name="bought">Купленому</string>
+    <string name="dollar">$</string>
+    <string name="count_item">%1$.2f</string>
+    <string name="price_item">Ціна: %1$.2f$</string>
+    <string name="total_item">Всього: %1$.2f$</string>
 </resources>

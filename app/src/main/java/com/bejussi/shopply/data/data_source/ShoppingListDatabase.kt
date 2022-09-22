@@ -9,7 +9,7 @@ import com.bejussi.shopply.domain.model.Item
 
 @Database(
     entities = [Item::class, Category::class],
-    version = 5,
+    version = 8,
     exportSchema = false
 )
 abstract class ShoppingListDatabase: RoomDatabase() {

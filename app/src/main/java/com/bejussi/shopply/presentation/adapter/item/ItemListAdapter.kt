@@ -1,14 +1,14 @@
 package com.bejussi.shopply.presentation.adapter.item
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bejussi.shopply.R
 import com.bejussi.shopply.databinding.ItemItemsCategoryBinding
 import com.bejussi.shopply.databinding.ItemItemsCategoryBoughtBinding
-import com.bejussi.shopply.domain.model.Category
 import com.bejussi.shopply.domain.model.Item
 
 class ItemListAdapter(
@@ -45,19 +45,24 @@ class ItemListAdapter(
                         currentItem.bought = checkBox.isChecked
                         itemActionListener.onItemEdit(currentItem)
                     }
+                    expandable.visibility = if(currentItem.isExpandable) View.VISIBLE else View.GONE
+                }
+                holder.itemView.setOnClickListener {
+                    currentItem.isExpandable = !currentItem.isExpandable
+                    itemActionListener.onItemEdit(currentItem)
                 }
             }.bind(currentItem)
 
             ITEM_DONT_BOUGHT -> (holder as ItemViewHolder).apply {
                 binding.apply {
                     plusButton.setOnClickListener {
-                        currentItem.count++
+                        currentItem.count = currentItem.count + 0.1f
                         itemActionListener.onItemEdit(currentItem)
                     }
 
                     minusButton.setOnClickListener {
-                        if (currentItem.count > 1) {
-                            currentItem.count--
+                        if (currentItem.count > 0.1) {
+                            currentItem.count = currentItem.count - 0.1f
                             itemActionListener.onItemEdit(currentItem)
                         }
                     }
@@ -65,6 +70,11 @@ class ItemListAdapter(
                         currentItem.bought = checkBox.isChecked
                         itemActionListener.onItemEdit(currentItem)
                     }
+                    expandable.visibility = if(currentItem.isExpandable) View.VISIBLE else View.GONE
+                }
+                holder.itemView.setOnClickListener {
+                    currentItem.isExpandable = !currentItem.isExpandable
+                    itemActionListener.onItemEdit(currentItem)
                 }
             }.bind(currentItem)
         }
@@ -82,11 +92,12 @@ class ItemListAdapter(
     companion object {
         private val DiffCallback = object : DiffUtil.ItemCallback<Item>() {
             override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
-                return oldItem === newItem
+                return oldItem.id == newItem.id
             }
 
+            @SuppressLint("DiffUtilEquals")
             override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean {
-                return oldItem.name == newItem.name
+                return oldItem === newItem
             }
         }
 

@@ -38,24 +38,26 @@ class AddNewItemSheet() : BottomSheetDialogFragment() {
         binding.addButton.setOnClickListener {
             val nameItem = binding.nameEditText.text.toString()
             val countItem = binding.countEditText.text.toString()
+            val priceItem = binding.priceEditText.text.toString()
 
             if (nameItem.isEmpty() || countItem.isEmpty()) {
                 showErrorToast()
             } else {
-                val item = createItem(nameItem, countItem)
+                val item = createItem(nameItem, countItem, priceItem)
                 addItem(item)
             }
         }
     }
 
-    private fun createItem(nameItem: String, countItem: String): Item {
+    private fun createItem(nameItem: String, countItem: String, priceItem: String): Item {
         return Item(
             id = 0,
             name = nameItem,
-            count = countItem.toInt(),
+            count = countItem.toFloat(),
             bought = false,
-            category = args.category.name,
-            categoryId = args.category.id
+            categoryId = args.category.id,
+            price = priceItem.toFloat(),
+            isExpandable = false
         )
     }
 

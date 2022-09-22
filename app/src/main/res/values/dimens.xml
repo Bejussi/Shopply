@@ -51,7 +51,7 @@
     <dimen name="item_items_border">2dp</dimen>
     <dimen name="item_items_margin_left_right">20dp</dimen>
     <dimen name="item_items_checkbox_margin_top_bottom">15dp</dimen>
-    <dimen name="item_items_height">56dp</dimen>
+    <dimen name="item_items_height">101dp</dimen>
     <dimen name="count_text">12dp</dimen>
 
     <!-- Sheet -->
@@ -81,5 +81,10 @@
 
     <!-- Dash -->
     <dimen name="dashWidth">10dp</dimen>
+
+    <!-- Expandable item -->
+    <dimen name="expandable_height">44dp</dimen>
+    <dimen name="expandable_margin_top_bottom">12dp</dimen>
+    <dimen name="edit_text_weight">56dp</dimen>
 
 </resources>

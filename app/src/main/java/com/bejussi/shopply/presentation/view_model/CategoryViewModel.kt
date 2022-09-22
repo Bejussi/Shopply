@@ -15,7 +15,7 @@ class CategoryViewModel @Inject constructor(
     val categoryList: LiveData<List<Category>> =
         categoryUseCases.getCategoryListUseCase().asLiveData()
 
-    val emptyDatabase: MutableLiveData<Boolean> = MutableLiveData(true)
+    val emptyDatabase: MutableLiveData<Boolean> = MutableLiveData(false)
 
     fun checkIfDatabaseEmpty(category: List<Category>) {
         emptyDatabase.value = category.isEmpty()

@@ -1,5 +1,6 @@
 package com.bejussi.shopply.presentation.adapter.category
 
+import android.annotation.SuppressLint
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -77,9 +78,10 @@ class CategoryListAdapter(
     companion object {
         private val DiffCallback = object : DiffUtil.ItemCallback<Category>() {
             override fun areItemsTheSame(oldItem: Category, newItem: Category): Boolean {
-                return oldItem === newItem
+                return oldItem.id == newItem.id
             }
 
+            @SuppressLint("DiffUtilEquals")
             override fun areContentsTheSame(oldItem: Category, newItem: Category): Boolean {
                 return oldItem.name == newItem.name
             }

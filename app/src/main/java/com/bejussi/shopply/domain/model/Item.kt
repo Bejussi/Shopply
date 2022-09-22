@@ -15,8 +15,9 @@ data class Item(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
     val name: String,
-    var count: Int,
-    val category: String,
+    var count: Float,
     val categoryId: Int,
-    var bought: Boolean
+    var bought: Boolean,
+    var price: Float,
+    var isExpandable: Boolean
 )

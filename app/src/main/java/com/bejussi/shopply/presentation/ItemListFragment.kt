@@ -79,9 +79,9 @@ class ItemListFragment : Fragment() {
     private fun popupMenu(view: View) {
         val popupMenu = PopupMenu(view.context, view)
         popupMenu.inflate(R.menu.item_list_menu)
-        popupMenu.setOnMenuItemClickListener {
+        popupMenu.setOnMenuItemClickListener { it ->
             when (it.itemId) {
-                R.id.sort_by_items -> {
+                R.id.sort_by_name -> {
                     viewModel.sortedItems.observe(this.viewLifecycleOwner) { items ->
                         items.let {
                             adapter.submitList(it)
@@ -89,19 +89,27 @@ class ItemListFragment : Fragment() {
                     }
                     true
                 }
+                R.id.sort_by_bought -> {
+                    viewModel.allItems.observe(this.viewLifecycleOwner) { items ->
+                        items.let {
+                            adapter.submitList(it)
+                        }
+                    }
+                    true
+                }
                 R.id.delete_checked_items -> {
-                    viewModel.deleteCheckedItems(args.category.name)
+                    viewModel.deleteCheckedItems(args.category.id)
                     true
                 }
                 R.id.clean_items_list -> {
-                    viewModel.cleanItemsList(args.category.name)
+                    viewModel.cleanItemsList(args.category.id)
                     true
                 }
                 else -> false
             }
         }
         popupMenu.setForceShowIcon(true)
-        popupMenu.setGravity(Gravity.END);
+        popupMenu.setGravity(Gravity.END)
         popupMenu.show()
     }
 
