@@ -14,8 +14,8 @@ class ItemRepositoryImpl(
         return itemDao.getItem(itemId)
     }
 
-    override fun getItemsList(categoryName: String): Flow<List<Item>> {
-        return itemDao.getItemsList(categoryName)
+    override fun getItemsList(categoryId: Int): Flow<List<Item>> {
+        return itemDao.getItemsList(categoryId)
     }
 
     override suspend fun editItem(item: Item) {
@@ -30,15 +30,15 @@ class ItemRepositoryImpl(
         itemDao.addItem(item)
     }
 
-    override suspend fun cleanItemsList(categoryName: String) {
-        itemDao.cleanItemsList(categoryName)
+    override suspend fun cleanItemsList(categoryId: Int) {
+        itemDao.cleanItemsList(categoryId)
     }
 
-    override suspend fun deleteCheckedItems(categoryName: String) {
-        itemDao.deleteCheckedItems(categoryName)
+    override suspend fun deleteCheckedItems(categoryId: Int) {
+        itemDao.deleteCheckedItems(categoryId)
     }
 
-    override fun sortByName(categoryName: String): Flow<List<Item>> {
-        return itemDao.sortByName(categoryName)
+    override fun sortByName(categoryId: Int): Flow<List<Item>> {
+        return itemDao.sortByName(categoryId)
     }
 }

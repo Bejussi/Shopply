@@ -7,8 +7,8 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface ItemDao {
 
-    @Query("SELECT* FROM item WHERE category = :categoryName ORDER BY bought")
-    fun getItemsList(categoryName: String): Flow<List<Item>>
+    @Query("SELECT* FROM item WHERE categoryId = :categoryId ORDER BY bought")
+    fun getItemsList(categoryId: Int): Flow<List<Item>>
 
     @Query("SELECT* FROM item WHERE id = :id")
     fun getItem(id: Int): Flow<Item>
@@ -22,12 +22,12 @@ interface ItemDao {
     @Delete
     suspend fun deleteItem(item: Item)
 
-    @Query("DELETE FROM item WHERE category = :categoryName")
-    suspend fun cleanItemsList(categoryName: String)
+    @Query("DELETE FROM item WHERE categoryId = :categoryId")
+    suspend fun cleanItemsList(categoryId: Int)
 
-    @Query("DELETE FROM item WHERE category = :categoryName AND bought = 1")
-    suspend fun deleteCheckedItems(categoryName: String)
+    @Query("DELETE FROM item WHERE categoryId = :categoryId AND bought = 1")
+    suspend fun deleteCheckedItems(categoryId: Int)
 
-    @Query("SELECT* FROM item WHERE category = :categoryName ORDER BY name")
-    fun sortByName(categoryName: String): Flow<List<Item>>
+    @Query("SELECT* FROM item WHERE categoryId = :categoryId ORDER BY name")
+    fun sortByName(categoryId: Int): Flow<List<Item>>
 }

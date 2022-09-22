@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 class SortByNameUseCase(private val itemRepository: ItemRepository) {
 
-    operator fun invoke(categoryName: String): Flow<List<Item>> {
-        return itemRepository.sortByName(categoryName)
+    operator fun invoke(categoryId: Int): Flow<List<Item>> {
+        return itemRepository.sortByName(categoryId)
     }
 }

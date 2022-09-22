@@ -41,4 +41,8 @@
     <string name="undo">Скасувати</string>
     <string name="name">Назві</string>
     <string name="bought">Купленому</string>
+    <string name="dollar">$</string>
+    <string name="count_item">%1$.2f</string>
+    <string name="price_item">Ціна: %1$.2f$</string>
+    <string name="total_item">Всього: %1$.2f$</string>
 </resources>

@@ -18,10 +18,10 @@ class ItemViewModel @Inject constructor(
 
     val category = state.get<Category>(CATEGORY_STATE_KEY)!!
 
-    val allItems: LiveData<List<Item>> = itemUseCases.getItemsListUseCase(category.name).asLiveData()
-    val sortedItems: LiveData<List<Item>> = itemUseCases.sortByNameUseCase(category.name).asLiveData()
+    val allItems: LiveData<List<Item>> = itemUseCases.getItemsListUseCase(category.id).asLiveData()
+    val sortedItems: LiveData<List<Item>> = itemUseCases.sortByNameUseCase(category.id).asLiveData()
 
-    val emptyDatabase: MutableLiveData<Boolean> = MutableLiveData(true)
+    val emptyDatabase: MutableLiveData<Boolean> = MutableLiveData(false)
 
     fun checkIfDatabaseEmpty(items: List<Item>) {
         emptyDatabase.value = items.isEmpty()
@@ -45,15 +45,15 @@ class ItemViewModel @Inject constructor(
         }
     }
 
-    fun deleteCheckedItems(categoryName: String) {
+    fun deleteCheckedItems(categoryId: Int) {
         viewModelScope.launch {
-            itemUseCases.deleteCheckedItemsUseCase(categoryName)
+            itemUseCases.deleteCheckedItemsUseCase(categoryId)
         }
     }
 
-    fun cleanItemsList(categoryName: String) {
+    fun cleanItemsList(categoryId: Int) {
         viewModelScope.launch {
-            itemUseCases.cleanItemsListUseCase(categoryName)
+            itemUseCases.cleanItemsListUseCase(categoryId)
         }
     }
 

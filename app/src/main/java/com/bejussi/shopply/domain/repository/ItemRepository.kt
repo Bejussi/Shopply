@@ -8,7 +8,7 @@ interface ItemRepository {
 
     fun getItem(itemId: Int): Flow<Item>
 
-    fun getItemsList(categoryName: String): Flow<List<Item>>
+    fun getItemsList(categoryId: Int): Flow<List<Item>>
 
     suspend fun editItem(item: Item)
 
@@ -16,9 +16,9 @@ interface ItemRepository {
 
     suspend fun addItem(item: Item)
 
-    suspend fun cleanItemsList(categoryName: String)
+    suspend fun cleanItemsList(categoryId: Int)
 
-    suspend fun deleteCheckedItems(categoryName: String)
+    suspend fun deleteCheckedItems(categoryId: Int)
 
-    fun sortByName(categoryName: String): Flow<List<Item>>
+    fun sortByName(categoryId: Int): Flow<List<Item>>
 }

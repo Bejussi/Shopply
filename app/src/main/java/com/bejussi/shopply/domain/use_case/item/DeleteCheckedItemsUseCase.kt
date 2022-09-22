@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 class DeleteCheckedItemsUseCase(private val itemRepository: ItemRepository) {
 
-    suspend operator fun invoke(categoryName: String) {
-        itemRepository.deleteCheckedItems(categoryName)
+    suspend operator fun invoke(categoryId: Int) {
+        itemRepository.deleteCheckedItems(categoryId)
     }
 }

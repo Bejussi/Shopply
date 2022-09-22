@@ -40,4 +40,8 @@
     <string name="undo">Undo</string>
     <string name="name">Name</string>
     <string name="bought">Bought</string>
+    <string name="dollar">$</string>
+    <string name="count_item">%1$.2f</string>
+    <string name="price_item">Price: %1$.2f$</string>
+    <string name="total_item">Total: %1$.2f$</string>
 </resources>

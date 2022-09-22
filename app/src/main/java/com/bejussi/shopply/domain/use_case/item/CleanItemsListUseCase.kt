@@ -4,7 +4,7 @@ import com.bejussi.shopply.domain.repository.ItemRepository
 
 class CleanItemsListUseCase(private val itemRepository: ItemRepository) {
     
-    suspend operator fun invoke(categoryName: String) {
-        itemRepository.cleanItemsList(categoryName)
+    suspend operator fun invoke(categoryId: Int) {
+        itemRepository.cleanItemsList(categoryId)
     }
 }
