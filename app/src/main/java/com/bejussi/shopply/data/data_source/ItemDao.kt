@@ -30,4 +30,7 @@ interface ItemDao {
 
     @Query("SELECT* FROM item WHERE categoryId = :categoryId ORDER BY name")
     fun sortByName(categoryId: Int): Flow<List<Item>>
+
+    @Query("SELECT SUM(count * price) FROM item WHERE categoryId = :categoryId")
+    fun getTotalPrice(categoryId: Int): Flow<Float>
 }

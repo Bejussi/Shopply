@@ -41,4 +41,8 @@ class ItemRepositoryImpl(
     override fun sortByName(categoryId: Int): Flow<List<Item>> {
         return itemDao.sortByName(categoryId)
     }
+
+    override fun getItemsTotalPrice(categoryId: Int): Flow<Float> {
+        return itemDao.getTotalPrice(categoryId)
+    }
 }

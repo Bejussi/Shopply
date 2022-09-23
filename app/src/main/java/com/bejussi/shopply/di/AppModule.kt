@@ -72,7 +72,8 @@ object AppModule {
             addItemUseCase = AddItemUseCase(repository),
             cleanItemsListUseCase = CleanItemsListUseCase(repository),
             deleteCheckedItemsUseCase = DeleteCheckedItemsUseCase(repository),
-            sortByNameUseCase = SortByNameUseCase(repository)
+            sortByNameUseCase = SortByNameUseCase(repository),
+            getItemsTotalPrice = GetItemsTotalPrice(repository)
         )
     }
 
