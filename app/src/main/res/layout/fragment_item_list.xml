@@ -50,11 +50,12 @@
         android:id="@+id/recyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/margin_max"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_marginLeft="@dimen/left_right_padding"
+        android:layout_marginTop="@dimen/margin_max"
         android:layout_marginRight="@dimen/left_right_padding"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/margin_recycler"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/category_name_text" />
@@ -96,6 +97,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/empty_list_main_text" />
 
+    <TextView
+        android:id="@+id/textView2"
+        style="@style/DialogMainText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/left_right_padding"
+        android:layout_marginBottom="@dimen/margin_recycler"
+        android:text="@string/total"
+        app:layout_constraintBottom_toTopOf="@+id/add_new_item_button"
+        app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:id="@+id/total_price"
+        style="@style/DialogMainText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/left_right_padding"
+        android:layout_marginBottom="@dimen/margin_recycler"
+        tools:text="120$"
+        app:layout_constraintBottom_toTopOf="@+id/add_new_item_button"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,6 +21,8 @@ class ItemViewModel @Inject constructor(
     val allItems: LiveData<List<Item>> = itemUseCases.getItemsListUseCase(category.id).asLiveData()
     val sortedItems: LiveData<List<Item>> = itemUseCases.sortByNameUseCase(category.id).asLiveData()
 
+    val totalPrice: LiveData<Float> = itemUseCases.getItemsTotalPrice(category.id).asLiveData()
+
     val emptyDatabase: MutableLiveData<Boolean> = MutableLiveData(false)
 
     fun checkIfDatabaseEmpty(items: List<Item>) {

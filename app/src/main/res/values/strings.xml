@@ -44,4 +44,6 @@
     <string name="count_item">%1$.2f</string>
     <string name="price_item">Price: %1$.2f$</string>
     <string name="total_item">Total: %1$.2f$</string>
+    <string name="total">Total</string>
+    <string name="total_price">%1$.2f$</string>
 </resources>

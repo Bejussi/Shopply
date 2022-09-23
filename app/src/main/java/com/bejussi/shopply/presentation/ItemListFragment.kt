@@ -58,6 +58,12 @@ class ItemListFragment : Fragment() {
             showEmptyDatabaseViews(it)
         }
 
+        viewModel.totalPrice.observe(this.viewLifecycleOwner) { total ->
+            total.let {
+                binding.totalPrice.text = getString(R.string.total_price,total)
+            }
+        }
+
         setupRecyclerView()
 
         binding.backButton.setOnClickListener {

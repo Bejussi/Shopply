@@ -10,5 +10,6 @@ data class ItemUseCases(
     val addItemUseCase: AddItemUseCase,
     val cleanItemsListUseCase: CleanItemsListUseCase,
     val deleteCheckedItemsUseCase: DeleteCheckedItemsUseCase,
-    val sortByNameUseCase: SortByNameUseCase
+    val sortByNameUseCase: SortByNameUseCase,
+    val getItemsTotalPrice: GetItemsTotalPrice
 )

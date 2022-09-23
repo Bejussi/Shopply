@@ -21,4 +21,6 @@ interface ItemRepository {
     suspend fun deleteCheckedItems(categoryId: Int)
 
     fun sortByName(categoryId: Int): Flow<List<Item>>
+
+    fun getItemsTotalPrice(categoryId: Int): Flow<Float>
 }
