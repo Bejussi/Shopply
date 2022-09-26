@@ -47,6 +47,9 @@
         <action
             android:id="@+id/action_itemListFragment_to_addNewItemSheet"
             app:destination="@id/addNewItemSheet" />
+        <action
+            android:id="@+id/action_itemListFragment_to_editItemSheet"
+            app:destination="@id/editItemSheet" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -88,6 +91,21 @@
         <action
             android:id="@+id/action_editCategorySheet_to_categoryListFragment"
             app:destination="@id/categoryListFragment" />
+        <argument
+            android:name="category"
+            app:argType="com.bejussi.shopply.domain.model.Category" />
+    </dialog>
+    <dialog
+        android:id="@+id/editItemSheet"
+        android:name="com.bejussi.shopply.presentation.sheet_dialog.EditItemSheet"
+        android:label="fragment_edit_item_sheet"
+        tools:layout="@layout/fragment_edit_item_sheet" >
+        <action
+            android:id="@+id/action_editItemSheet_to_itemListFragment"
+            app:destination="@id/itemListFragment" />
+        <argument
+            android:name="item"
+            app:argType="com.bejussi.shopply.domain.model.Item" />
         <argument
             android:name="category"
             app:argType="com.bejussi.shopply.domain.model.Category" />

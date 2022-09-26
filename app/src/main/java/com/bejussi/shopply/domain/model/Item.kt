@@ -1,8 +1,10 @@
 package com.bejussi.shopply.domain.model
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 
 @Entity(foreignKeys = [ForeignKey(
     entity = Category::class,
@@ -11,6 +13,7 @@ import androidx.room.PrimaryKey
     onDelete = ForeignKey.CASCADE,
     onUpdate = ForeignKey.CASCADE
 )])
+@Parcelize
 data class Item(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
@@ -20,4 +23,4 @@ data class Item(
     var bought: Boolean,
     var price: Float,
     var isExpandable: Boolean
-)
+): Parcelable

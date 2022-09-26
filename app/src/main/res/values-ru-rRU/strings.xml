@@ -47,4 +47,5 @@
     <string name="total_item">Всего: %1$.2f$</string>
     <string name="total">Всего</string>
     <string name="total_price">%1$.2f$</string>
+    <string name="edit_item">Редактировать элемент</string>
 </resources>

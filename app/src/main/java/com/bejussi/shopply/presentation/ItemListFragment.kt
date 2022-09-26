@@ -126,6 +126,12 @@ class ItemListFragment : Fragment() {
                 viewModel.editItem(item)
             }
 
+            override fun showOnItemEditFragment(item: Item) {
+                val action =
+                    ItemListFragmentDirections.actionItemListFragmentToEditItemSheet(item, args.category)
+                findNavController().navigate(action)
+            }
+
         })
         binding.recyclerView.adapter = adapter
 

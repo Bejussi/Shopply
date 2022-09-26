@@ -70,6 +70,9 @@ class ItemListAdapter(
                         currentItem.bought = checkBox.isChecked
                         itemActionListener.onItemEdit(currentItem)
                     }
+                    countText.setOnClickListener {
+                        itemActionListener.showOnItemEditFragment(currentItem)
+                    }
                     expandable.visibility = if(currentItem.isExpandable) View.VISIBLE else View.GONE
                 }
                 holder.itemView.setOnClickListener {
