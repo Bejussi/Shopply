@@ -46,7 +46,7 @@
         android:hint="@string/count"
         android:textAlignment="center"
         android:lines="1"
-        android:maxLength="4"
+        android:maxLength="7"
         android:inputType="numberDecimal|numberSigned"
         app:layout_constraintEnd_toStartOf="@id/price_edit_text"
         app:layout_constraintTop_toBottomOf="@+id/title_text"/>
@@ -63,7 +63,7 @@
         android:hint="@string/dollar"
         android:textAlignment="center"
         android:lines="1"
-        android:maxLength="4"
+        android:maxLength="7"
         android:inputType="numberDecimal|numberSigned"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_text"/>
