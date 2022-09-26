@@ -60,7 +60,11 @@ class ItemListFragment : Fragment() {
 
         viewModel.totalPrice.observe(this.viewLifecycleOwner) { total ->
             total.let {
-                binding.totalPrice.text = getString(R.string.total_price,total)
+                if (total!=null) {
+                    binding.totalPrice.text = getString(R.string.total_price,total)
+                } else {
+                    binding.totalPrice.text = getString(R.string.total_price,0.0)
+                }
             }
         }
 
