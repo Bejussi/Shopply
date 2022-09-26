@@ -34,7 +34,7 @@ class NotificationWorker(
         val pendingIntent = PendingIntent.getActivity(applicationContext, 0, intent, 0)
 
         val notification = Notification.Builder(applicationContext, CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_launcher_background)
+            .setSmallIcon(R.drawable.ic_stat_notification)
             .setContentTitle(applicationContext.getString(R.string.title_notification))
             .setContentText(applicationContext.getString(R.string.message_notification))
             .setPriority(Notification.PRIORITY_MAX)
