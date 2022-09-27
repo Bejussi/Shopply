@@ -38,8 +38,8 @@ class ItemListAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val currentItem = getItem(position)
 
-        when (getItemViewType(position)) {
-            ITEM_BOUGHT -> (holder as ItemBoughtViewHolder).apply {
+        when (holder) {
+            is ItemBoughtViewHolder -> holder.apply {
                 binding.apply {
                     checkBox.setOnClickListener {
                         currentItem.bought = checkBox.isChecked
@@ -47,13 +47,13 @@ class ItemListAdapter(
                     }
                     expandable.visibility = if(currentItem.isExpandable) View.VISIBLE else View.GONE
                 }
-                holder.itemView.setOnClickListener {
+                itemView.setOnClickListener {
                     currentItem.isExpandable = !currentItem.isExpandable
                     itemActionListener.onItemEdit(currentItem)
                 }
             }.bind(currentItem)
 
-            ITEM_DONT_BOUGHT -> (holder as ItemViewHolder).apply {
+            is ItemViewHolder -> holder.apply {
                 binding.apply {
                     plusButton.setOnClickListener {
                         currentItem.count = currentItem.count + 0.1f
@@ -75,7 +75,7 @@ class ItemListAdapter(
                     }
                     expandable.visibility = if(currentItem.isExpandable) View.VISIBLE else View.GONE
                 }
-                holder.itemView.setOnClickListener {
+                itemView.setOnClickListener {
                     currentItem.isExpandable = !currentItem.isExpandable
                     itemActionListener.onItemEdit(currentItem)
                 }
