@@ -2,18 +2,21 @@
 
 **Shopply** is a simple shopping list Android application. The goal of app is to help users plan purchases, make lists and enjoy the shopping.
 
-> Make your daily shopping more easily with Shopply
+> Make your daily shopping easily with Shopply
 
 Is also part of my portfolio projects :) It showcases my skills regarding developing Android apps.
 
-You can Install and test app from below 👇
-
 ## 📸 Screenshots
+
+![img.png](screenshots/img.png) ![img_1.png](screenshots/img_1.png) ![img_7.png](screenshots/img_7.png) 
+![img_2.png](screenshots/img_2.png) ![img_3.png](screenshots/img_3.png) ![img_4.png](screenshots/img_4.png) 
+![img_5.png](screenshots/img_5.png) ![img_6.png](screenshots/img_6.png) ![img_8.png](screenshots/img_8.png)
 
 ## 🔥 Features
 
-* Customise your list with emoji
-* CRUD operations on lists
+* CRUD operations on lists and items
+* Add price and quantity for items
+* Calculate total cost
 * Light/Dark themes
 * All data are stored locally on the device
 * Every day notification
@@ -29,8 +32,10 @@ You can Install and test app from below 👇
 * Navigation Component
 * View Banding
 * Dagger Hilt
+* WorkManager
 * Safe Args
 * Clean Architecture
+* Splash Screen api
 
 ## ⚡ Getting Started
 
@@ -59,4 +64,7 @@ A step by step to get working project
 You can star ⭐ and fork 🍽️ this repository on GitHub by navigating at the top of this repository
 
 ## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+
 
