@@ -8,9 +8,10 @@ Is also part of my portfolio projects :) It showcases my skills regarding develo
 
 ## 📸 Screenshots
 
-![img.png](screenshots/img.png) ![img_1.png](screenshots/img_1.png) ![img_7.png](screenshots/img_7.png) 
-![img_2.png](screenshots/img_2.png) ![img_3.png](screenshots/img_3.png) ![img_4.png](screenshots/img_4.png) 
-![img_5.png](screenshots/img_5.png) ![img_6.png](screenshots/img_6.png) ![img_8.png](screenshots/img_8.png)
+<img src= "screenshots/img.png" width="250"> <img src= "screenshots/img_1.png" width="250"> <img src= "screenshots/img_7.png" width="250">
+<img src= "screenshots/img_2.png" width="250"> <img src= "screenshots/img_3.png" width="250"> <img src= "screenshots/img_4.png" width="250">
+<img src= "screenshots/img_5.png" width="250"> <img src= "screenshots/img_6.png" width="250"> <img src= "screenshots/img_8.png" width="250">
+<img src= "screenshots/img_9.png" width="250"> <img src= "screenshots/img_10.png" width="250"> <img src= "screenshots/img_11.png" width="250">
 
 ## 🔥 Features
 
