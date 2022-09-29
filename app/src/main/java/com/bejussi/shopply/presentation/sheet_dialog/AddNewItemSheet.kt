@@ -1,10 +1,12 @@
 package com.bejussi.shopply.presentation.sheet_dialog
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.datastore.preferences.protobuf.FloatValue
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.bejussi.shopply.R
@@ -13,6 +15,7 @@ import com.bejussi.shopply.domain.model.Item
 import com.bejussi.shopply.presentation.view_model.ItemViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.NumberFormat
 
 @AndroidEntryPoint
 class AddNewItemSheet() : BottomSheetDialogFragment() {

@@ -18,35 +18,37 @@ val Context.datastore : DataStore< Preferences> by  preferencesDataStore(name = 
 
 class SettingsDataStore(private val context: Context) {
 
-    val language: Flow<String> = context.datastore.data
+    private val settingsDataStore = context.datastore
+
+    val language: Flow<String> = settingsDataStore.data
         .map { preferences ->
             preferences[PreferencesKeys.LANGUAGE]?: "English"
         }
 
-    val notification: Flow<Boolean> = context.datastore.data
+    val notification: Flow<Boolean> = settingsDataStore.data
         .map { preferences ->
             preferences[PreferencesKeys.NOTIFICATION]?: true
         }
 
-    val darkTheme: Flow<Boolean> = context.datastore.data
+    val darkTheme: Flow<Boolean> = settingsDataStore.data
         .map { preferences ->
             preferences[PreferencesKeys.DARK_THEME]?: false
         }
 
     suspend fun updateLanguage(language: String) {
-        context.datastore.edit { preferences ->
+        settingsDataStore.edit { preferences ->
             preferences[PreferencesKeys.LANGUAGE] = language
         }
     }
 
     suspend fun updateNotification(notification: Boolean) {
-        context.datastore.edit { preferences ->
+        settingsDataStore.edit { preferences ->
             preferences[PreferencesKeys.NOTIFICATION] = notification
         }
     }
 
     suspend fun updateDarkTheme(darkTheme: Boolean) {
-        context.datastore.edit { preferences ->
+        settingsDataStore.edit { preferences ->
             preferences[PreferencesKeys.DARK_THEME] = darkTheme
         }
     }
