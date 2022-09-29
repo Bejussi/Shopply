@@ -16,20 +16,24 @@
             app:enterAnim="@anim/from_right"
             app:exitAnim="@anim/to_left"
             app:popEnterAnim="@anim/from_left"
-            app:popExitAnim="@anim/to_right"  />
+            app:popExitAnim="@anim/to_right"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_categoryListFragment_to_settingsFragment"
             app:destination="@id/settingsFragment"
             app:enterAnim="@anim/from_left"
             app:exitAnim="@anim/to_right"
             app:popEnterAnim="@anim/from_right"
-            app:popExitAnim="@anim/to_left"  />
+            app:popExitAnim="@anim/to_left"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_categoryListFragment_to_addNewListSheet"
-            app:destination="@id/addNewListSheet" />
+            app:destination="@id/addNewListSheet"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_categoryListFragment_to_editCategorySheet"
-            app:destination="@id/editCategorySheet" />
+            app:destination="@id/editCategorySheet"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/itemListFragment"
@@ -40,16 +44,20 @@
             android:id="@+id/action_itemListFragment_to_categoryListFragment"
             app:destination="@id/categoryListFragment"
             app:enterAnim="@anim/from_left"
-            app:exitAnim="@anim/to_right"   />
+            app:exitAnim="@anim/to_right"
+            app:popUpTo="@id/nav_graph.xml"
+            app:popUpToInclusive="true" />
         <argument
             android:name="category"
             app:argType="com.bejussi.shopply.domain.model.Category" />
         <action
             android:id="@+id/action_itemListFragment_to_addNewItemSheet"
-            app:destination="@id/addNewItemSheet" />
+            app:destination="@id/addNewItemSheet"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_itemListFragment_to_editItemSheet"
-            app:destination="@id/editItemSheet" />
+            app:destination="@id/editItemSheet"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -60,7 +68,9 @@
             android:id="@+id/action_settingsFragment_to_categoryListFragment"
             app:destination="@id/categoryListFragment"
             app:enterAnim="@anim/from_right"
-            app:exitAnim="@anim/to_left" />
+            app:exitAnim="@anim/to_left"
+            app:popUpTo="@id/nav_graph.xml"
+            app:popUpToInclusive="true" />
     </fragment>
     <dialog
         android:id="@+id/addNewListSheet"
@@ -69,7 +79,8 @@
         tools:layout="@layout/fragment_add_new_list_sheet" >
         <action
             android:id="@+id/action_addNewListSheet_to_categoryListFragment"
-            app:destination="@id/categoryListFragment" />
+            app:destination="@id/categoryListFragment"
+            app:popUpToInclusive="false" />
     </dialog>
     <dialog
         android:id="@+id/addNewItemSheet"
@@ -78,7 +89,8 @@
         tools:layout="@layout/fragment_add_new_item_sheet" >
         <action
             android:id="@+id/action_addNewItemSheet_to_itemListFragment"
-            app:destination="@id/itemListFragment" />
+            app:destination="@id/itemListFragment"
+            app:popUpToInclusive="false" />
         <argument
             android:name="category"
             app:argType="com.bejussi.shopply.domain.model.Category" />
@@ -90,7 +102,8 @@
         tools:layout="@layout/fragment_edit_category_sheet" >
         <action
             android:id="@+id/action_editCategorySheet_to_categoryListFragment"
-            app:destination="@id/categoryListFragment" />
+            app:destination="@id/categoryListFragment"
+            app:popUpToInclusive="false" />
         <argument
             android:name="category"
             app:argType="com.bejussi.shopply.domain.model.Category" />
@@ -102,7 +115,8 @@
         tools:layout="@layout/fragment_edit_item_sheet" >
         <action
             android:id="@+id/action_editItemSheet_to_itemListFragment"
-            app:destination="@id/itemListFragment" />
+            app:destination="@id/itemListFragment"
+            app:popUpToInclusive="false" />
         <argument
             android:name="item"
             app:argType="com.bejussi.shopply.domain.model.Item" />

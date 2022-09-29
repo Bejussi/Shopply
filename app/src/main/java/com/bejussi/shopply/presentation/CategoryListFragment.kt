@@ -85,17 +85,6 @@ class CategoryListFragment : Fragment() {
             }
 
         })
-
-        binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                if (dy > 0 && binding.addNewListButton.visibility == View.VISIBLE) {
-                    binding.addNewListButton.visibility = View.INVISIBLE
-                } else if (dy < 0 && binding.addNewListButton.visibility != View.VISIBLE) {
-                    binding.addNewListButton.visibility = View.VISIBLE
-                }
-            }
-        })
     }
 
     private fun showEmptyDatabaseViews(emptyDatabase: Boolean) {

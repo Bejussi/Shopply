@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.SimpleItemAnimator
 import com.bejussi.shopply.R
 import com.bejussi.shopply.databinding.FragmentItemListBinding
 import com.bejussi.shopply.domain.model.Item
@@ -60,7 +61,11 @@ class ItemListFragment : Fragment() {
 
         viewModel.totalPrice.observe(this.viewLifecycleOwner) { total ->
             total.let {
-                binding.totalPrice.text = getString(R.string.total_price,total)
+                if (total!=null) {
+                    binding.totalPrice.text = getString(R.string.total_price,total)
+                } else {
+                    binding.totalPrice.text = getString(R.string.total_price,0.0)
+                }
             }
         }
 
@@ -134,6 +139,9 @@ class ItemListFragment : Fragment() {
 
         })
         binding.recyclerView.adapter = adapter
+        binding.recyclerView.apply {
+            (itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
+        }
 
         swipeToDelete(binding.recyclerView)
     }

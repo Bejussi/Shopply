@@ -1,29 +1,25 @@
 package com.bejussi.shopply.presentation
 
-import android.app.Activity
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.asLiveData
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.work.*
+import com.akexorcist.localizationactivity.ui.LocalizationActivity
 import com.bejussi.shopply.R
 import com.bejussi.shopply.presentation.utils.NotificationWorker
 import com.bejussi.shopply.presentation.utils.SettingsDataStore
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.*
 import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
+class MainActivity : LocalizationActivity(R.layout.activity_main) {
 
     private lateinit var navController: NavController
 
     private lateinit var settingsDataStore: SettingsDataStore
-
-    private var locale: Locale? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -46,7 +42,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
         settingsDataStore.language.asLiveData().observe(this) { language ->
             language.let {
-                setLocal(this, language)
+                setLanguage(language)
             }
 
         }
@@ -61,19 +57,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
-    }
-
-    private fun setLocal(activity: Activity, language: String) {
-        locale = Locale(language)
-        Locale.setDefault(locale)
-
-        val resources = activity.resources
-
-        val configuration = resources.configuration
-        configuration.setLocale(locale)
-        configuration.setLayoutDirection(locale)
-
-        resources.updateConfiguration(configuration, resources.displayMetrics)
     }
 
     private fun periodicNotificationWork(showNotification: Boolean) {
@@ -98,9 +81,5 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             .build()
 
         WorkManager.getInstance(this).enqueueUniquePeriodicWork("periodic_notification", ExistingPeriodicWorkPolicy.KEEP, workRequest)
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }

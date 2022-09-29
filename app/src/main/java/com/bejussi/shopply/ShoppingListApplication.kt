@@ -1,8 +1,11 @@
 package com.bejussi.shopply
 
-import android.app.Application
-import com.bejussi.shopply.data.data_source.ShoppingListDatabase
+import android.content.Context
+import com.akexorcist.localizationactivity.ui.LocalizationApplication
 import dagger.hilt.android.HiltAndroidApp
+import java.util.*
 
 @HiltAndroidApp
-class ShoppingListApplication: Application()
+class ShoppingListApplication: LocalizationApplication() {
+    override fun getDefaultLanguage(context: Context) = Locale.ENGLISH
+}

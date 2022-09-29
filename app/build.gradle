@@ -81,4 +81,7 @@ dependencies {
 
     //Splash Screen api
     implementation 'androidx.core:core-splashscreen:1.0.0'
+
+    //Change Language
+    implementation 'com.akexorcist:localization:1.2.11'
 }

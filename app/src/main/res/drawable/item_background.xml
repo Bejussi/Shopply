@@ -5,6 +5,9 @@
         android:color="@color/light_gray"
         android:width="@dimen/item_border"/>
 
+    <solid
+        android:color="@color/white"/>
+
     <corners
         android:radius="@dimen/button_radius"/>
 
